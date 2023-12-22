@@ -16,6 +16,7 @@ import { SignupValidation } from '@/lib/validation';
 import { z } from 'zod';
 import Loader from '@/components/shared/Loader';
 import { Link } from 'react-router-dom';
+import { createUserAccount } from '@/lib/appwrite/api';
 
 
 
@@ -32,16 +33,16 @@ const SignupForm = () => {
       name: '',
 			username: '',
       email: '',
-      password: '',
+      password: '', 
 		},
 	})
 
 	// 2. Define a submit handler.
 async	function onSubmit(values: z.infer<typeof SignupValidation>) {
 		// create user account
-    const response = await createUserAccount(values);
-    
-		
+    const NewUser = await createUserAccount(values);
+    console.log(NewUser);``
+
 	}
 
 	return (
