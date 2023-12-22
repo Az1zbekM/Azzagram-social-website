@@ -1,57 +1,276 @@
 
+// import { zodResolver } from '@hookform/resolvers/zod'
+// import { useToast } from '@/components/ui/use-toast'
+
+// import {
+// 	Form,
+// 	FormControl,
+// 	// FormDescription,
+// 	FormField,
+// 	FormItem,
+// 	FormLabel,
+// 	FormMessage,
+// } from '@/components/ui/form'
+// import { Input } from '@/components/ui/input'
+// import { Button } from "@/components/ui/button";
+// import { useForm } from 'react-hook-form';
+// import { SignupValidation } from '@/lib/validation';
+// import { z } from 'zod';
+// import Loader from '@/components/shared/Loader';
+// import { Link, useNavigate } from 'react-router-dom';
+// // import { createUserAccount } from '@/lib/appwrite/api';
+// import { useCreateUserAccount, useSigninAccount } from '@/lib/react-query/queriesAndMutations';
+// import { useAuth } from '@/context/AuthContext';
+
+
+
+
+// const SignupForm = () => {
+
+// 	const { toast } = useToast()
+// 	const { checkAuthUser, isPending: isUserLoading } = useAuth();
+// 	const navigate = useNavigate();
+
+// 	const { mutateAsync: createUserAccount, isPending: isCreatingUser } = useCreateUserAccount();
+// 	const { mutateAsync: signInAccount, isPending: isSigningIn } = useSigninAccount();
+// 	// 1. Define your form.
+// 	const form = useForm<z.infer<typeof SignupValidation>>({
+// 		resolver: zodResolver(SignupValidation),
+// 		defaultValues: {
+// 			name: '',
+// 			username: '',
+// 			email: '',
+// 			password: '',
+// 		},
+// 	})	
+
+// 	async function onSubmit(values: z.infer<typeof SignupValidation>) {
+
+// 		const NewUser = await createUserAccount(values);
+// 		console.log(NewUser);
+// 		if (!NewUser) {
+// 			return toast({
+// 				title: 'Sign-up Failed',
+// 				description: 'Something went wrong',
+// 			})
+// 		}
+// 		const session = await signInAccount({
+// 			email: values.email,
+// 			password: values.password,
+// 		})
+// 		if (!session) {
+// 			return toast({ title: 'Sign-in Failed', description: 'Something went wrong', })
+// 		}
+
+// 		const isLoggedIn = await checkAuthUser();
+// 		if (!isLoggedIn) {
+// 			form.reset();
+// 			navigate('/');
+// 		} else {
+// 			return toast({
+// 				title: 'Sign-up Failed, please try again',
+// 				description: 'Something went wrong',
+// 			})
+// 		}
+// 		return (
+// 			<Form {...form}>
+// 				<div className='sm:w-420 flex-center flex-col'>
+// 					<img src='/assets/images/logo.svg' alt='logo' />
+// 					<h2 className='h3-bold md:h2-bold sm:pt-4'>Create a new account bro</h2>
+// 					<p className='text-light-3 small-medium md:base-regular mt-2 '>
+// 						To use Azzagram, please fill details below
+// 					</p>
+
+// 					<form
+// 						onSubmit={form.handleSubmit(onSubmit)}
+// 						className='flex flex-col gap-4 w-full mt-4'
+// 					>
+// 						<FormField
+// 							control={form.control}
+// 							name='name'
+// 							render={({ field }) => (
+// 								<FormItem>
+// 									<FormLabel>Name</FormLabel>
+// 									<FormControl>
+// 										<Input type='text' className='shad-input' {...field} />
+// 									</FormControl>
+// 									{/* <FormDescription>
+// 									This is your public display name.
+// 								</FormDescription> */}
+// 									<FormMessage />
+// 								</FormItem>
+// 							)}
+// 						/>
+
+// 						<FormField
+// 							control={form.control}
+// 							name='username'
+// 							render={({ field }) => (
+// 								<FormItem>
+// 									<FormLabel>Username</FormLabel>
+// 									<FormControl>
+// 										<Input type='text' className='shad-input' {...field} />
+// 									</FormControl>
+// 									{/* <FormDescription>
+// 									This is your public display name.
+// 								</FormDescription> */}
+// 									<FormMessage />
+// 								</FormItem>
+// 							)}
+// 						/>
+
+// 						<FormField
+// 							control={form.control}
+// 							name='email'
+// 							render={({ field }) => (
+// 								<FormItem>
+// 									<FormLabel>Email</FormLabel>
+// 									<FormControl>
+// 										<Input type='email' className='shad-input' {...field} />
+// 									</FormControl>
+// 									{/* <FormDescription>
+// 									This is your public display name.
+// 								</FormDescription> */}
+// 									<FormMessage />
+// 								</FormItem>
+// 							)}
+// 						/>
+
+// 						<FormField
+// 							control={form.control}
+// 							name='password'
+// 							render={({ field }) => (
+// 								<FormItem>
+// 									<FormLabel>Password</FormLabel>
+// 									<FormControl>
+// 										<Input type='password' className='shad-input' {...field} />
+// 									</FormControl>
+// 									{/* <FormDescription>
+// 									This is your public display name.
+// 								</FormDescription> */}
+// 									<FormMessage />
+// 								</FormItem>
+// 							)}
+// 						/>
+
+// 						<Button className='shad-button_primary' type='submit'>
+// 							{isCreatingUser ? (
+// 								<div className='flex-center gap-2'>
+// 									<Loader /> Loading...
+// 								</div>
+// 							) : (
+// 								'Sign up'
+// 							)}
+// 						</Button>
+
+// 						<p className='text-small-regular text-light-3 mt-2 text-center'>
+// 							Already have an account?
+// 							<Link
+// 								to='/sign-in'
+// 								className='text-primary hover:underline ml-2 hover:text-red'
+// 							>
+// 								Log in
+// 							</Link>
+// 						</p>
+// 					</form>
+// 				</div>
+// 			</Form>
+// 		)
+// 	}	
+// }
+
+// 	export default SignupForm;
+
+
+
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useToast } from '@/components/ui/use-toast'
+
 import {
 	Form,
 	FormControl,
-	// FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
 	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Button } from "@/components/ui/button";
-import { useForm } from 'react-hook-form';
-import { SignupValidation } from '@/lib/validation';
-import { z } from 'zod';
-import Loader from '@/components/shared/Loader';
-import { Link } from 'react-router-dom';
-import { createUserAccount } from '@/lib/appwrite/api';
-
-
-
-
+import { Button } from '@/components/ui/button'
+import { useForm } from 'react-hook-form'
+import { SignupValidation } from '@/lib/validation'
+import { z } from 'zod'
+import Loader from '@/components/shared/Loader'
+import { Link, useNavigate } from 'react-router-dom'
+import {
+	useCreateUserAccount,
+	useSigninAccount,
+} from '@/lib/react-query/queriesAndMutations'
+import { useUserContext } from '@/context/AuthContext'
 
 const SignupForm = () => {
-  const isLoading = false;
+	const { toast } = useToast()
+	const { checkAuthUser, isLoading: isUserLoading } = useUserContext()
+	const navigate = useNavigate()
 
+	const { mutateAsync: createUserAccount, isPending: isCreatingUser } =
+		useCreateUserAccount()
+	const { mutateAsync: signInAccount, isPending: isSigningIn } =
+		useSigninAccount()
 
-  // 1. Define your form.
 	const form = useForm<z.infer<typeof SignupValidation>>({
 		resolver: zodResolver(SignupValidation),
 		defaultValues: {
-      name: '',
+			name: '',
 			username: '',
-      email: '',
-      password: '', 
+			email: '',
+			password: '',
 		},
 	})
 
-	// 2. Define a submit handler.
-async	function onSubmit(values: z.infer<typeof SignupValidation>) {
-		// create user account
-    const NewUser = await createUserAccount(values);
-    console.log(NewUser);``
+	async function onSubmit(values: z.infer<typeof SignupValidation>) {
+		try {
+			const newUser = await createUserAccount(values)
 
+			if (!newUser) {
+				return toast({
+					title: 'Sign-up Failed',
+					description: 'Something went wrong',
+				})
+			}
+
+			const session = await signInAccount({
+				email: values.email,
+				password: values.password,
+			})
+
+			if (!session) {
+				return toast({
+					title: 'Sign-in Failed',
+					description: 'Something went wrong',
+				})
+			}
+
+			const isLoggedIn = await checkAuthUser()
+
+			if (isLoggedIn) {
+				form.reset()
+				navigate('/')
+			} else {
+				toast({
+					title: 'Sign-up Failed, please try again',
+					description: 'Something went wrong',
+				})
+			}
+		} catch (error) {
+			console.error('Error during form submission:', error)
+		}
 	}
 
 	return (
 		<Form {...form}>
 			<div className='sm:w-420 flex-center flex-col'>
 				<img src='/assets/images/logo.svg' alt='logo' />
-				<h2 className='h3-bold md:h2-bold sm:pt-12'>
-					Create a new account bro
-				</h2>
+				<h2 className='h3-bold md:h2-bold sm:pt-4'>Create a new account bro</h2>
 				<p className='text-light-3 small-medium md:base-regular mt-2 '>
 					To use Azzagram, please fill details below
 				</p>
@@ -69,9 +288,6 @@ async	function onSubmit(values: z.infer<typeof SignupValidation>) {
 								<FormControl>
 									<Input type='text' className='shad-input' {...field} />
 								</FormControl>
-								{/* <FormDescription>
-									This is your public display name.
-								</FormDescription> */}
 								<FormMessage />
 							</FormItem>
 						)}
@@ -86,9 +302,6 @@ async	function onSubmit(values: z.infer<typeof SignupValidation>) {
 								<FormControl>
 									<Input type='text' className='shad-input' {...field} />
 								</FormControl>
-								{/* <FormDescription>
-									This is your public display name.
-								</FormDescription> */}
 								<FormMessage />
 							</FormItem>
 						)}
@@ -103,9 +316,6 @@ async	function onSubmit(values: z.infer<typeof SignupValidation>) {
 								<FormControl>
 									<Input type='email' className='shad-input' {...field} />
 								</FormControl>
-								{/* <FormDescription>
-									This is your public display name.
-								</FormDescription> */}
 								<FormMessage />
 							</FormItem>
 						)}
@@ -120,28 +330,34 @@ async	function onSubmit(values: z.infer<typeof SignupValidation>) {
 								<FormControl>
 									<Input type='password' className='shad-input' {...field} />
 								</FormControl>
-								{/* <FormDescription>
-									This is your public display name.
-								</FormDescription> */}
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
 
-					<Button className='shad-button_primary'  type='submit'>
-                {isLoading ? (<div className="flex-center gap-2">
-                  <Loader />  Loading...
-                  </div>) : 'Sign up'}
-          </Button>
+					<Button className='shad-button_primary' type='submit'>
+						{isCreatingUser ? (
+							<div className='flex-center gap-2'>
+								<Loader /> Loading...
+							</div>
+						) : (
+							'Sign up'
+						)}
+					</Button>
 
-          <p className='text-small-regular text-light-3 mt-2 text-center'>
-            Already have an account? 
-            <Link to="/sign-in" className='text-primary hover:underline ml-2 hover:text-red'>Log in</Link>
-          </p>
+					<p className='text-small-regular text-light-3 mt-2 text-center'>
+						Already have an account?
+						<Link
+							to='/sign-in'
+							className='text-primary hover:underline ml-2 hover:text-red'
+						>
+							Log in
+						</Link>
+					</p>
 				</form>
 			</div>
 		</Form>
 	)
 }
 
-export default SignupForm;
+export default SignupForm

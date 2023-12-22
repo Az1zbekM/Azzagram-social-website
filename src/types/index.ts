@@ -1,4 +1,5 @@
 export type INavLink = {
+
 	imgURL: string
 	route: string
 	label: string
@@ -38,6 +39,7 @@ export type IUser = {
 	email: string
 	imageUrl: string
 	bio: string
+	password: string
 }
 
 export type INewUser = {
