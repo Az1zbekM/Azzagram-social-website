@@ -18,7 +18,7 @@ import { z } from 'zod'
 import Loader from '@/components/shared/Loader'
 import { Link, useNavigate } from 'react-router-dom'
 import {
- 	useSigninAccount,
+	useSigninAccount,
 } from '@/lib/react-query/queriesAndMutations'
 import { useUserContext } from '@/context/AuthContext'
 
@@ -28,7 +28,7 @@ const SigninForm = () => {
 	const navigate = useNavigate()
 
 
-	const { mutateAsync: signInAccount} =
+	const { mutateAsync: signInAccount } =
 		useSigninAccount()
 
 	const form = useForm<z.infer<typeof SigninValidation>>({
@@ -41,30 +41,30 @@ const SigninForm = () => {
 
 	async function onSubmit(values: z.infer<typeof SigninValidation>) {
 
-			const session = await signInAccount({
-				email: values.email,
-				password: values.password,
+		const session = await signInAccount({
+			email: values.email,
+			password: values.password,
+		})
+
+		if (!session) {
+			return toast({
+				title: 'Sign-in Failed',
+				description: 'Something went wrong',
 			})
+		}
 
-			if (!session) {
-				return toast({
-					title: 'Sign-in Failed',
-					description: 'Something went wrong',
-				})
-			}
+		const isLoggedIn = await checkAuthUser()
 
-			const isLoggedIn = await checkAuthUser()
+		if (isLoggedIn) {
+			form.reset()
+			navigate('/root')
+		} else {
+			return toast({
+				title: 'Sign-up Failed, please try again',
+				description: 'Something went wrong',
+			})
+		}
 
-			if (isLoggedIn) {
-				form.reset()
-				navigate('/')
-			} else {
-			  return toast({
-					title: 'Sign-up Failed, please try again',
-					description: 'Something went wrong',
-				})
-			}
-		 
 	}
 
 	return (
@@ -87,7 +87,7 @@ const SigninForm = () => {
 							<FormItem>
 								<FormLabel>Email</FormLabel>
 								<FormControl>
-									<Input type='email' className='shad-input' {...field} />
+									<Input type='email' className='shad-input' placeholder='Enter your email'  {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -101,7 +101,7 @@ const SigninForm = () => {
 							<FormItem>
 								<FormLabel>Password</FormLabel>
 								<FormControl>
-									<Input type='password' className='shad-input' {...field} />
+									<Input type='password' className='shad-input' placeholder='Enter your password' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

@@ -20,7 +20,7 @@ const App = () => {
             <Route path="sign-up" element={<SignupFrom />}/>
           </Route>
             {/* protected routes */}
-           <Route element={<RootLayout/>}/>
+           <Route path="root" element={<RootLayout/>}/>
 
             <Route  index element={<Home/>}/>
         </Routes>

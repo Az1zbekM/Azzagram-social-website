@@ -15,7 +15,7 @@ import { SignupValidation } from '@/lib/validation'
 import { z } from 'zod'
 import Loader from '@/components/shared/Loader'
 import { Link, useNavigate } from 'react-router-dom'
-import {useCreateUserAccount} from '@/lib/react-query/queriesAndMutations'
+import { useCreateUserAccount } from '@/lib/react-query/queriesAndMutations'
 import { useUserContext } from '@/context/AuthContext'
 
 const SignupForm = () => {
@@ -44,8 +44,8 @@ const SignupForm = () => {
 				return toast({
 					title: 'Sign-up Failed',
 					description: 'Something went wrong',
-				})	
-			} 	
+				})
+			}
 
 			const isLoggedIn = await checkAuthUser()
 
@@ -87,7 +87,7 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Name</FormLabel>
 								<FormControl>
-									<Input type='text' className='shad-input' {...field} />
+									<Input type='text' className='shad-input' placeholder='Enter your name' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -101,7 +101,7 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Username</FormLabel>
 								<FormControl>
-									<Input type='text' className='shad-input' {...field} />
+									<Input type='text' className='shad-input' placeholder='Enter your username' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -115,7 +115,7 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Email</FormLabel>
 								<FormControl>
-									<Input type='email' className='shad-input' {...field} />
+									<Input type='email' className='shad-input' placeholder='Enter your email' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -129,7 +129,7 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Password</FormLabel>
 								<FormControl>
-									<Input type='password' className='shad-input' {...field} />
+									<Input type='password' className='shad-input' placeholder='Enter your password' {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -150,7 +150,7 @@ const SignupForm = () => {
 						Already have an account?
 						<Link
 							to='/sign-in'
-							className='text-primary hover:underline ml-2 hover:text-red'
+							className='text-primary-500 hover:underline ml-2 hover:text-red'
 						>
 							Log in
 						</Link>

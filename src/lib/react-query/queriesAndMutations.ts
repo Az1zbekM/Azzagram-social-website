@@ -4,7 +4,7 @@ import {
     useQueryClient,
     useInfiniteQuery,
 } from "@tanstack/react-query"
-import { createUserAccount, signInAccount } from "../appwrite/api"
+import { createUserAccount, signInAccount, signOutAccount } from "../appwrite/api"
 import { INewUser } from "@/types"
 
 export const useGetUser = () => {
@@ -31,6 +31,12 @@ export const useSigninAccount = () => {
             ) => signInAccount(user),
 	})
 } // For signing in 
+
+export const useSignOutAccount = () => {
+	return useMutation({
+		mutationFn: signOutAccount,
+	})
+} // For signing out
 
 function getUser(): any {
     throw new Error("Function not implemented.")
