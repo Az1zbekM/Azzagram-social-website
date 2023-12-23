@@ -72,7 +72,7 @@ const SigninForm = () => {
 			<div className='sm:w-420 flex-center flex-col'>
 				<img src='/assets/images/logo.svg' alt='logo' />
 				<h2 className='h3-bold md:h2-bold sm:pt-4'>Log in, my bro</h2>
-				<p className='text-light-2 text-purple-500 small-medium md:base-regular mt-2 '>
+				<p className='text-light-3  small-medium md:base-regular mt-2 '>
 					Wellcome back, you have been missed
 				</p>
 
@@ -82,7 +82,7 @@ const SigninForm = () => {
 				>
 					<FormField
 						control={form.control}
-						name='email'    // Change this to 'email'
+						name='email' // Change this to 'email'
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Email</FormLabel>
@@ -96,7 +96,7 @@ const SigninForm = () => {
 
 					<FormField
 						control={form.control}
-						name='password'   // Change this to 'password'
+						name='password' // Change this to 'password'
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Password</FormLabel>
@@ -109,7 +109,7 @@ const SigninForm = () => {
 					/>
 
 					<Button className='shad-button_primary' type='submit'>
-						{ isUserLoading ? (
+						{isUserLoading ? (
 							<div className='flex-center gap-2'>
 								<Loader /> Loading...
 							</div>
@@ -118,13 +118,13 @@ const SigninForm = () => {
 						)}
 					</Button>
 
-					<p className='text-small-regular text-purple-500  mt-2 text-center'>
+					<p className='text-small-regular text-light-3  mt-2 text-center'>
 						Don't have an account?
 						<Link
-							to='/sign-in'
-							className=' text-lime-500 hover:underline ml-2 hover:text-lime-300'
+							to='/sign-up'
+							className=' text-primary-500 hover:underline ml-2 hover:text-primary-600'
 						>
-              Sign up
+							Sign up
 						</Link>
 					</p>
 				</form>

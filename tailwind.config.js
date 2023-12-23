@@ -20,6 +20,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'back': '#000000',
         'primary-500': '#877EFF',
         'primary-600': '#5D5FEF',
         'secondary-500': '#FFB620',
@@ -63,4 +64,5 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate')],
+
 };
