@@ -120,16 +120,21 @@ export async function signOutAccount() {
 // ============================== CREATE POST
 export async function createPost(post: INewPost) {
 	try {
+		// Check if post.file is defined
+		if (!post.file || post.file.length === 0) {
+			throw new Error('File is missing')
+		}
+
 		// Upload file to appwrite storage
 		const uploadedFile = await uploadFile(post.file[0])
 
-		if (!uploadedFile) throw Error
+		if (!uploadedFile) throw new Error('Failed to upload file')
 
 		// Get file url
 		const fileUrl = getFilePreview(uploadedFile.$id)
 		if (!fileUrl) {
 			await deleteFile(uploadedFile.$id)
-			throw Error
+			throw new Error('Failed to get file URL')
 		}
 
 		// Convert tags into array
@@ -152,14 +157,16 @@ export async function createPost(post: INewPost) {
 
 		if (!newPost) {
 			await deleteFile(uploadedFile.$id)
-			throw Error
+			throw new Error('Failed to create post')
 		}
 
 		return newPost
 	} catch (error) {
 		console.log(error)
+		// Handle the error or rethrow it if necessary
 	}
 }
+
 
 // ============================== UPLOAD FILE
 export async function uploadFile(file: File) {
@@ -267,7 +274,8 @@ export async function getPostById(postId?: string) {
 
 // ============================== UPDATE POST
 export async function updatePost(post: IUpdatePost) {
-	const hasFileToUpdate = post.file.length > 0
+	// Check if post.file is defined
+	const hasFileToUpdate = (post.file?.length || 0) > 0
 
 	try {
 		let image = {
@@ -276,15 +284,20 @@ export async function updatePost(post: IUpdatePost) {
 		}
 
 		if (hasFileToUpdate) {
+			// Check if post.file[0] is defined
+			if (!post.file?.[0]) {
+				throw new Error('File is missing')
+			}
+
 			// Upload new file to appwrite storage
 			const uploadedFile = await uploadFile(post.file[0])
-			if (!uploadedFile) throw Error
+			if (!uploadedFile) throw new Error('Failed to upload file')
 
 			// Get new file url
 			const fileUrl = getFilePreview(uploadedFile.$id)
 			if (!fileUrl) {
 				await deleteFile(uploadedFile.$id)
-				throw Error
+				throw new Error('Failed to get file URL')
 			}
 
 			image = { ...image, imageUrl: fileUrl, imageId: uploadedFile.$id }
@@ -293,7 +306,7 @@ export async function updatePost(post: IUpdatePost) {
 		// Convert tags into array
 		const tags = post.tags?.replace(/ /g, '').split(',') || []
 
-		//  Update post
+		// Update post
 		const updatedPost = await databases.updateDocument(
 			appwriteConfig.databaseId,
 			appwriteConfig.postCollectionId,
@@ -315,7 +328,7 @@ export async function updatePost(post: IUpdatePost) {
 			}
 
 			// If no new file uploaded, just throw error
-			throw Error
+			throw new Error('Failed to update post')
 		}
 
 		// Safely delete old file after successful update
@@ -326,8 +339,10 @@ export async function updatePost(post: IUpdatePost) {
 		return updatedPost
 	} catch (error) {
 		console.log(error)
+		// Handle the error or rethrow it if necessary
 	}
 }
+
 
 // ============================== DELETE POST
 export async function deletePost(postId?: string, imageId?: string) {
