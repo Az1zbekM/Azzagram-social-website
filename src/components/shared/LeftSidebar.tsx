@@ -43,15 +43,26 @@ const { pathname } = useLocation()
 
 				<ul className='flex flex-col gap-6'>
 					{sidebarLinks.map((link: INavLink) => {
-						const isActive = pathname === link.route;
+						const isActive = pathname === link.route
 
 						return (
-							<li key={link.label} className={`leftsidebar-link  group ${isActive && 'bg-primary-500'}  `}>
+							<li
+								key={link.label}
+								className={`leftsidebar-link  group ${
+									isActive && 'bg-primary-500'
+								}  `}
+							>
 								<NavLink
 									to={link.route}
-									className={`flex gap-4 items-center p-4`}>
-								
-									<img src={link.imgURL} alt={link.label} className={`group-hover:invert-white ${isActive && 'invert-white'}`} />
+									className={`flex gap-4 items-center p-4`}
+								>
+									<img
+										src={link.imgURL}
+										alt={link.label}
+										className={`group-hover:invert-white ${
+											isActive && 'invert-white'
+										}`}
+									/>
 									{link.label}
 								</NavLink>
 							</li>
@@ -59,6 +70,15 @@ const { pathname } = useLocation()
 					})}
 				</ul>
 			</div>
+
+			<Button
+				variant={'ghost'}
+				className=' shed-button_ghost flex gap-3 items-center w-full  justify-start hover:text-red' 
+				onClick={() => signOut()}
+			>
+				<img src='/assets/icons/logout.svg' alt='Logout' />
+				<p className='small-medium lg:base-medium'>Logout</p>
+			</Button>
 		</nav>
 	)
 }
