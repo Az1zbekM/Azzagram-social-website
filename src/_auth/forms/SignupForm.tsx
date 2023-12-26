@@ -15,7 +15,7 @@ import { SignupValidation } from '@/lib/validation'
 import { z } from 'zod'
 import Loader from '@/components/shared/Loader'
 import { Link, useNavigate } from 'react-router-dom'
-import { useCreateUserAccount } from '@/lib/react-query/queriesAndMutations'
+import { useCreateUserAccount } from '@/lib/react-query/queries'
 import { useUserContext } from '@/context/AuthContext'
 
 const SignupForm = () => {

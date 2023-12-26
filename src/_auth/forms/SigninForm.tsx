@@ -18,8 +18,8 @@ import { z } from 'zod'
 import Loader from '@/components/shared/Loader'
 import { Link, useNavigate } from 'react-router-dom'
 import {
-	useSigninAccount,
-} from '@/lib/react-query/queriesAndMutations'
+	useSignInAccount,
+} from '@/lib/react-query/queries'
 import { useUserContext } from '@/context/AuthContext'
 
 const SigninForm = () => {
@@ -29,7 +29,7 @@ const SigninForm = () => {
 
 
 	const { mutateAsync: signInAccount } =
-		useSigninAccount()
+		useSignInAccount()
 
 	const form = useForm<z.infer<typeof SigninValidation>>({
 		resolver: zodResolver(SigninValidation),
