@@ -5,18 +5,19 @@ import { Outlet } from "react-router-dom"
 
 const RootLayout = () => {
   return (
-    <div className="w-full flex h-full md:flex">
+    <div className="w-full h-full   md:flex ">
         <Topbar/>
 
         <LeftSidebar/>
 
         <section className="flex flex-1 h-full w-full">
           <Outlet/>
+
         </section>
 
         <Bottombar/>
-    </div>
-  )
+    </div>  
+  ) 
 }
 
-export default RootLayout
+export default RootLayout;

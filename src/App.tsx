@@ -3,8 +3,8 @@ import './globals.css'
 import SigninFrom from '../src/_auth/forms/SigninForm';
 import SignupFrom from '../src/_auth/forms/SignupForm';
 import AuthLayout from './_auth/forms/AuthLayout';
-import RootLayout from './_root/pages/RootLayout';
-import { Home } from './_root/pages';
+import RootLayout from './_root/RootLayout';
+import { AllUsers, CreatePost, EditPost, Explore, Home, PostDetails, Profiles, Saved, UpdateProfile } from './_root/pages';
 //toast
 import { Toaster } from '@/components/ui/toaster'
 
@@ -20,9 +20,17 @@ const App = () => {
             <Route path="sign-up" element={<SignupFrom />}/>
           </Route>
             {/* protected routes */}
-           <Route path="root" element={<RootLayout/>}/>
-
-            <Route  index element={<Home/>}/>
+          <Route element={<RootLayout/>}>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/explore' element={<Explore/>}/>
+            <Route path='/saved' element={<Saved/>}/>
+            <Route path='/all-users' element={<AllUsers/>}/>
+            <Route path='/create-post' element={<CreatePost/>}/>
+            <Route path='/update-post/:id' element={<EditPost/>}/>
+            <Route path='/posts/:id' element={<PostDetails/>}/>
+            <Route path='/profile/:id/*' element={<Profiles/>}/>
+            <Route path='/update-profile/:id' element={<UpdateProfile/>}/>
+          </Route>
         </Routes>
         <Toaster/>
       </main>
