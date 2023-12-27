@@ -62,7 +62,7 @@ const SignupForm = () => {
 			console.error('Error during form submission:', error);
 			toast({
 				title: 'Sign-up Failed, please try again',
-				description: 'Something went wrong',
+				description: error instanceof Error ? error.message : 'Something went wrong',
 			})
 		}
 	}

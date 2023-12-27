@@ -8,7 +8,6 @@ import { AllUsers, CreatePost, EditPost, Explore, Home, PostDetails, Profiles, S
 //toast
 import { Toaster } from '@/components/ui/toaster'
 import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const App = () => {
   return (
@@ -34,7 +33,6 @@ const App = () => {
         </Routes>
         <Toaster/>
         <Analytics />
-        <SpeedInsights />
       </main>
   )
 }
