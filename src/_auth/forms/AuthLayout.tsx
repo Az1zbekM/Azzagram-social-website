@@ -2,13 +2,7 @@ import { Outlet, Navigate } from 'react-router-dom'
 
 
 const AuthLayout = () => {
-	const isAuthenticated = true;
-/*
- git it
- git add . 
- git commit -m "message"
- git push
-*/
+	const isAuthenticated =	localStorage.getItem('isAuthenticated') ;
 	return (
 		<>
 			{isAuthenticated ? (
