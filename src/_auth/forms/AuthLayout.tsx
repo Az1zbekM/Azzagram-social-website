@@ -2,8 +2,13 @@ import { Outlet, Navigate } from 'react-router-dom'
 
 
 const AuthLayout = () => {
-	const isAuthenticated = false;
-
+	const isAuthenticated = true;
+/*
+ git it
+ git add . 
+ git commit -m "message"
+ git push
+*/
 	return (
 		<>
 			{isAuthenticated ? (
@@ -31,3 +36,4 @@ const AuthLayout = () => {
 }
 
 export default AuthLayout
+

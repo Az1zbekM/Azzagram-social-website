@@ -167,8 +167,7 @@ const SignupForm = () => {
 							'Sign up'
 						)}
 					</Button> */}
-
-					{/* new sign up  button*/}
+					{/* new <button></button> */}
 
 					<Button
 						className='shad-button_primary'
