@@ -77,7 +77,7 @@
   .invert-white {
     @apply invert brightness-0 transition;
   }
-
+       
   .flex-center {
     @apply flex justify-center items-center;
   }

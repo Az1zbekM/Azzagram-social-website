@@ -178,12 +178,12 @@ const LeftSidebar = () => {
 			</div>
 
 			<Button
-				variant='ghost'
-				className='shad-button_ghost'
+			variant='ghost'
+			className='p-4 flex gap-4 items-center w-[65%] justify-start text-white hover:bg-red hover:text-white focus:bg-red focus:text-white active:bg-red active:text-white font-black'
 				onClick={e => handleSignOut(e)}
 			>
-				<img src='/assets/icons/logout.svg' alt='logout' />
-				<p className='small-medium lg:base-medium'>Logout</p>
+				<img src='/assets/icons/logout.svg' alt='logout' className=' invert-white' />
+				<p className='small-medium lg:base-medium font-bold'>Logout</p>
 			</Button>
 		</nav>
 	)
