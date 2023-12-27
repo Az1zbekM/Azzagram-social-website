@@ -59,12 +59,14 @@ const SignupForm = () => {
 				})
 			}
 		} catch (error) {
-			console.error('Error during form submission:', error);
+			console.error('Error during form submission:', error)
 			toast({
 				title: 'Sign-up Failed, please try again',
-				description: error instanceof Error ? error.message : 'Something went wrong',
+				description:
+					error instanceof Error ? error.message : 'Something went wrong',
 			})
 		}
+
 	}
 
 	return (
@@ -87,7 +89,12 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Name</FormLabel>
 								<FormControl>
-									<Input type='text' className='shad-input' placeholder='Enter your name' {...field} />
+									<Input
+										type='text'
+										className='shad-input'
+										placeholder='Enter your name'
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -101,7 +108,12 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Username</FormLabel>
 								<FormControl>
-									<Input type='text' className='shad-input' placeholder='Enter your username' {...field} />
+									<Input
+										type='text'
+										className='shad-input'
+										placeholder='Enter your username'
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -115,7 +127,12 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Email</FormLabel>
 								<FormControl>
-									<Input type='email' className='shad-input' placeholder='Enter your email' {...field} />
+									<Input
+										type='email'
+										className='shad-input'
+										placeholder='Enter your email'
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -129,14 +146,35 @@ const SignupForm = () => {
 							<FormItem>
 								<FormLabel>Password</FormLabel>
 								<FormControl>
-									<Input type='password' className='shad-input' placeholder='Enter your password' {...field} />
+									<Input
+										type='password'
+										className='shad-input'
+										placeholder='Enter your password'
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
 
-					<Button className='shad-button_primary' type='submit'>
+					{/* <Button className='shad-button_primary' type='submit'>
+						{isCreatingUser ? (
+							<div className='flex-center gap-2'>
+								<Loader /> Loading...
+							</div>
+						) : (
+							'Sign up'
+						)}
+					</Button> */}
+
+					{/* new sign up  button*/}
+
+					<Button
+						className='shad-button_primary'
+						type='submit'
+						disabled={isCreatingUser}
+					>
 						{isCreatingUser ? (
 							<div className='flex-center gap-2'>
 								<Loader /> Loading...
