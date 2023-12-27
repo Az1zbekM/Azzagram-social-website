@@ -7,7 +7,7 @@ import RootLayout from './_root/RootLayout';
 import { AllUsers, CreatePost, EditPost, Explore, Home, PostDetails, Profiles, Saved, UpdateProfile } from './_root/pages';
 //toast
 import { Toaster } from '@/components/ui/toaster'
-
+import { Analytics } from '@vercel/analytics/react'
 
 
 const App = () => {
@@ -33,6 +33,7 @@ const App = () => {
           </Route>
         </Routes>
         <Toaster/>
+        <Analytics />
       </main>
   )
 }
