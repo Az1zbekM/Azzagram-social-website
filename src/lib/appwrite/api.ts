@@ -150,7 +150,7 @@ export async function createPost(post: INewPost) {
 				caption: post.caption,
 				imageUrl: fileUrl,
 				imageId: uploadedFile.$id,
-				location: post.location,
+				location: post.location || 'unknown',
 				tags: tags,
 			}
 		)
@@ -175,9 +175,9 @@ export async function uploadFile(file: File) {
 			appwriteConfig.storageId,
 			ID.unique(),
 			file
-		)
+		);
 
-		return uploadedFile
+		return uploadedFile;
 	} catch (error) {
 		console.log(error)
 	}
