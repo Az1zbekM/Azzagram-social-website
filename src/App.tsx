@@ -7,6 +7,7 @@ import RootLayout from './_root/RootLayout';
 import { AllUsers, CreatePost, EditPost, Explore, Home, PostDetails, Profiles, Saved, UpdateProfile } from './_root/pages';
 //toast
 import { Toaster } from '@/components/ui/toaster'
+import Reels from './_root/pages/Reels';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path='/posts/:id' element={<PostDetails/>}/>
             <Route path='/profile/:id/*' element={<Profiles/>}/>
             <Route path='/update-profile/:id' element={<UpdateProfile/>}/>
+            <Route path='/posts' element={<Reels/>}/>
           </Route>
         </Routes>
         <Toaster/>

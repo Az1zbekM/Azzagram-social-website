@@ -19,3 +19,12 @@ export const account = new Account(client);
 export const databases = new Databases(client);
 export const storage = new Storage(client);
 export const avatars = new Avatars(client);
+
+
+
+// client
+// 	.setEndpoint('https://cloud.appwrite.io/v1')
+// 	.setProject('65851a5f07540b9f0461') 
+
+// export { ID } from 'appwrite'
+

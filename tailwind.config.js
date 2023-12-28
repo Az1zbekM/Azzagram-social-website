@@ -1,6 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
+
+  
+    theme: {
+      extend: {
+        colors: {
+          primary: {
+            500: '#877EFF',
+          },
+        },
+      },
+    },
+
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',

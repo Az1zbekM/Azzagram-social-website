@@ -13,7 +13,6 @@
     @apply bg-dark-1 text-white min-h-screen font-inter;
   }
 }
-
 @layer utilities {
 
   /* TYPOGRAPHY */
@@ -77,6 +76,10 @@
   .invert-white {
     @apply invert brightness-0 transition;
   }
+
+   .invert-primary-500 {
+    @apply to-primary-500 invert brightness-0 transition;
+  } 
        
   .flex-center {
     @apply flex justify-center items-center;
