@@ -75,26 +75,42 @@
 
 
 const Reels = () => {
-  return (
-		<div className='flex h-screen w-full '>
-			<div className='flex-1 overflow-scroll p-5 custom-scrollbar '>
-				<h1 className='h1-bold flex justify-center mt-2 mb-2'>Reels</h1>
+	const massive = Array(0).fill(
+		'https://www.youtube.com/embed/mqUN4N2q4qY?si=xlNCYJRwquZSeSkh'
+	)
 
-				<iframe
-                    className='mx-auto rounded-lg'
-					width='560'
-					height='315'
-					src='https://www.youtube.com/embed/mqUN4N2q4qY?si=xlNCYJRwquZSeSkh'
-					title='YouTube video player'
-					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share allowfullscreen'
-					allowFullScreen
-				></iframe>
+	return (
+		<div className='flex h-screen w-full '>
+			<div className='flex-1 overflow-scroll p-5 custom-scrollbar'>
+				<h1 className='text-3xl font-bold text-center mb-4'>Reels</h1>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+					{massive.map((url, index) => (
+						<div
+							key={index}
+							className='relative rounded-md overflow-hidden border-[2px] border-primary-500 shadow-white/25'
+						>
+							<iframe
+								className='w-full h-48 md:h-60 lg:h-80'
+								src={url}
+								title={`YouTube video player ${index}`}
+								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share allowfullscreen'
+								allowFullScreen
+								loading='eager'
+							></iframe>
+							<div className='absolute inset-0 flex items-center justify-center bg-black  transition-opacity opacity-0 hover:opacity-100'>
+								<p className='font-bold'>Video {index + 1}</p>
+							</div>
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	)
 }
 
 export default Reels
+
+
 
 
 

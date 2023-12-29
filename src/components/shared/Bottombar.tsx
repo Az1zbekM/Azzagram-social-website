@@ -17,7 +17,7 @@ const Bottombar = () => {
 						key={link.label}
 						className={`group ${
 							isActive && 'bg-primary-500 rounded-[10px]'
-						} flex-center  items-center flex-col gap-1 p-4  hover:bg-primary-500 hover:rounded-[10px] `}
+						} flex-center  items-center flex-col gap-1 p-4  hover:rounded-[10px] `}
 					>
 						<img
 							src={link.imgURL}
@@ -28,7 +28,7 @@ const Bottombar = () => {
 								isActive && 'invert-white'
 							} `}	
 						/>
-						<p className='tiny-medium	text-light-2 '>{link.label}</p>
+						<p className='tiny-medium text-light-2 '>{link.label}</p>
 					</Link>
 				)
 			})}

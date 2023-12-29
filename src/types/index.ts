@@ -1,5 +1,6 @@
-export type INavLink = {
+import { ReactNode } from "react"
 
+export type INavLink = {
 	imgURL: string
 	route: string
 	label: string
@@ -28,11 +29,12 @@ export type IUpdatePost = {
 	imageId: string
 	imageUrl: URL
 	file?: File[]
-	location?: string	
+	location: string 	
 	tags?: string
 }
 
 export type IUser = {
+  [x: string]: ReactNode
 	id: string
 	name: string
 	username: string

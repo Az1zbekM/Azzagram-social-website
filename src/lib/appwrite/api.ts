@@ -43,6 +43,7 @@ export async function saveUserToDB(user: {
 	name: string
 	imageUrl: URL
 	username?: string
+	password?: string
 }) {
 	try {
 		const newUser = await databases.createDocument(
@@ -139,18 +140,16 @@ export async function createPost(post: INewPost) {
 
 		// Convert tags into array
 		const tags = post.tags?.replace(/ /g, '').split(',') || []
-
 		// Create post
 		const newPost = await databases.createDocument(
 			appwriteConfig.databaseId,
 			appwriteConfig.postCollectionId,
-			ID.unique(),
+			ID.unique(),	
 			{
 				creator: post.userId,
 				caption: post.caption,
 				imageUrl: fileUrl,
 				imageId: uploadedFile.$id,
-				location: post.location || 'unknown',
 				tags: tags,
 			}
 		)
@@ -305,7 +304,6 @@ export async function updatePost(post: IUpdatePost) {
 
 		// Convert tags into array
 		const tags = post.tags?.replace(/ /g, '').split(',') || []
-
 		// Update post
 		const updatedPost = await databases.updateDocument(
 			appwriteConfig.databaseId,
@@ -315,7 +313,6 @@ export async function updatePost(post: IUpdatePost) {
 				caption: post.caption,
 				imageUrl: image.imageUrl,
 				imageId: image.imageId,
-				location: post.location,
 				tags: tags,
 			}
 		)

@@ -26,5 +26,5 @@ export const avatars = new Avatars(client);
 // 	.setEndpoint('https://cloud.appwrite.io/v1')
 // 	.setProject('65851a5f07540b9f0461') 
 
-// export { ID } from 'appwrite'
+export { ID } from 'appwrite'
 
