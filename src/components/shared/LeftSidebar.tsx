@@ -5,7 +5,7 @@ import { Loader } from '@/components/shared'
 import { Button } from '@/components/ui/button'
 import { useSignOutAccount } from '@/lib/react-query/queries'
 import { INITIAL_USER, useUserContext } from '@/context/AuthContext'
-import './LeftSidebar.css'
+import '../shared/Leftsidebar.css'
 const LeftSidebar = () => {
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
