@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom';
 import './globals.css'
 import SigninFrom from '../src/_auth/forms/SigninForm';
 import SignupFrom from '../src/_auth/forms/SignupForm';
-import AuthLayout from './_auth/forms/AuthLayout';
+import AuthLayout from './_auth/AuthLayout';
 import RootLayout from './_root/RootLayout';
 import { AllUsers, ChatPage, CreatePost, EditPost, Explore, Home, PostDetails, Profiles, Saved, UpdateProfile } from './_root/pages';
 //toast

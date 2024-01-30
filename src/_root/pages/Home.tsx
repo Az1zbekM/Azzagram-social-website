@@ -35,7 +35,7 @@ const Home = () => {
 		<div className='flex flex-1'>
 			<div className='home-container'>
 				<div className='home-posts'>
-					<h2 className='h3-bold md:h2-bold text-left w-full'>Home Feed</h2>
+					<h2 className='h3-bold md:h2-bold w-full text-center text-primary-500 text-3xl'>Yet not any creations</h2>
 					{isPostLoading && !posts ? (
 						<Loader />
 					) : (

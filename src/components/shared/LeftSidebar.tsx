@@ -25,11 +25,18 @@ const LeftSidebar = () => {
 
 	return (
 		<nav className='leftsidebar p-6'>
-			<div className='flex flex-col gap-5'>
-				<Link to='/' className='flex justify-center  '>
-						<h1 className='body-bold font-serif text-primary-500 text-3xl '>Azzagram</h1>
+			<div className='flex flex-col gap-6'>
+				<Link to='/' className='flex justify-center items-center gap-3 mb-2'>
+					<img
+						src='/assets/icons/chat.svg'
+						alt='Go Go Go'
+						className='w-8 h-8'
+					/>
+					<h1 className='body-bold font-serif text-primary-500 text-3xl '>
+						Azzagram
+					</h1>
 				</Link>
-
+				<hr className='border-primary-500 border-1 w-full m-0 p-0 mt-[-10px]' />
 				{isLoading || !user.email ? (
 					<div className='h-14'>
 						<Loader />
@@ -40,7 +47,7 @@ const LeftSidebar = () => {
 							id='profileimg'
 							src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
 							alt='profile'
-							className='h-12 w-12 rounded-full'
+							className='h-12 w-12 rounded-full ml-[10px]'
 						/>
 						<div className='flex flex-col'>
 							<p className='body-bold'>{user.name}</p>
@@ -56,9 +63,8 @@ const LeftSidebar = () => {
 						return (
 							<li
 								key={link.label}
-								className={`leftsidebar-link group ${
-									isActive && 'bg-primary-500'
-								}`}
+								className={`leftsidebar-link group ${isActive && 'bg-primary-500'
+									}`}
 							>
 								<NavLink
 									to={link.route}
@@ -69,9 +75,8 @@ const LeftSidebar = () => {
 										alt={link.label}
 										width={24}
 										height={24}
-										className={`group-hover:invert-white ${
-											isActive && 'invert-white'
-										}			`}
+										className={`group-hover:invert-white ${isActive && 'invert-white'
+											}			`}
 									/>
 									{link.label}
 								</NavLink>
@@ -79,20 +84,21 @@ const LeftSidebar = () => {
 						)
 					})}
 				</ul>
+				<Button
+					variant='ghost'
+					className='p-4 flex gap-4 items-center w-[67%] justify-start rounded-full hover:valid:bg-red hover:text-white focus:bg-red focus:text-white active:bg-red active:text-white font-black'
+					onClick={e => handleSignOut(e)}
+				>
+					<img
+						src='/assets/icons/logout.svg'
+						alt='logout'
+						className='fill-white !important'
+					/>
+					<p className='small-medium lg:base-medium font-bold'>Logout</p>
+				</Button>
 			</div>
 
-			<Button
-				variant='ghost'
-				className='p-4 flex gap-4 items-center w-[67%] justify-start rounded-full hover:valid:bg-red hover:text-white focus:bg-red focus:text-white active:bg-red active:text-white font-black'		
-				onClick={e => handleSignOut(e)}
-			>
-				<img
-					src='/assets/icons/logout.svg'
-					alt='logout'
-					className='fill-white !important'
-				/>
-				<p className='small-medium lg:base-medium font-bold'>Logout</p>
-			</Button>
+
 		</nav>
 	)
 }
