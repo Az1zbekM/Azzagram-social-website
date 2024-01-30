@@ -26,7 +26,7 @@ const LeftSidebar = () => {
 	return (
 		<nav className='leftsidebar p-6'>
 			<div className='flex flex-col gap-6'>
-				<Link to='/' className='flex justify-center items-center gap-3 mb-2'>
+				<Link to='/' className='flex justify-center items-center gap-3 mb-2 mr-4'>
 					<img
 						src='/assets/icons/chat.svg'
 						alt='Go Go Go'
@@ -36,26 +36,27 @@ const LeftSidebar = () => {
 						Azzagram
 					</h1>
 				</Link>
-				<hr className='border-primary-500 border-1 w-full m-0 p-0 mt-[-10px]' />
 				{isLoading || !user.email ? (
 					<div className='h-14'>
 						<Loader />
 					</div>
 				) : (
-					<Link to={`/profile/${user.id}`} className='flex gap-3 items-center'>
+					<Link to={`/profile/${user.id}`} className='flex gap-3 items-center justify-start'>
 						<img
 							id='profileimg'
 							src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
 							alt='profile'
-							className='h-12 w-12 rounded-full ml-[10px]'
+							className='h-12 w-12 rounded-full'
 						/>
 						<div className='flex flex-col'>
 							<p className='body-bold'>{user.name}</p>
 							<p className='small-regular text-light-3'>@{user.username}</p>
+							
 						</div>
 					</Link>
 				)}
-
+				<hr className='border-primary-500 border-1 w-full m-0 p-0 mt-[-10px]' />
+				
 				<ul className='flex flex-col gap-4'>
 					{sidebarLinks.map((link: INavLink) => {
 						const isActive = pathname === link.route
