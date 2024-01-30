@@ -93,7 +93,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
-export const 	useUserContext = () => useContext(AuthContext)
+export const useUserContext = () => useContext(AuthContext)
 
 // import { getCurrentUser } from '@/lib/appwrite/api'
 // import { IUser } from '@/types'

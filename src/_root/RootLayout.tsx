@@ -12,7 +12,6 @@ const RootLayout = () => {
 
         <section className="flex flex-1 h-full w-full">
           <Outlet/>
-
         </section>
 
         <Bottombar/>

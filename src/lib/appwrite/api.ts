@@ -41,7 +41,7 @@ export async function saveUserToDB(user: {
 	accountId: string
 	email: string
 	name: string
-	imageUrl: URL
+	imageUrl: URL | string
 	username?: string
 	password?: string
 }) {
@@ -556,3 +556,19 @@ export async function updateUser(user: IUpdateUser) {
 		console.log(error)
 	}
 }
+
+// ============================== SEARCH USERS
+
+// export async function SearchUsers(searchTerm: string) {
+// 	try {
+// 		await databases.listDocuments(
+// 			appwriteConfig.databaseId,
+// 			appwriteConfig.userCollectionId,
+// 			[Query.search('username', searchTerm), Query.orderDesc('$createdAt')]
+// 		)
+// 	} catch (error) {
+// 		console.log('Error searching users', error)
+// 	}
+// }
+
+	
