@@ -17,6 +17,8 @@ const GridPostList = ({
 }: GridPostListProps) => {
   const { user } = useUserContext();
 
+  if (!posts) return <div className="text-light-1">No posts</div>;
+
   return (
     <ul className="grid-container">
       {posts.map((post) => (
@@ -34,8 +36,7 @@ const GridPostList = ({
               <div className="flex items-center justify-start gap-2 flex-1">
                 <img
                   src={
-                    post.creator.imageUrl ||
-                    "/assets/icons/profile-placeholder.svg"
+                    post.creator.imageUrl || "/assets/icons/profile-placeholder.svg"
                   }
                   alt="creator"
                   className="w-8 h-8 rounded-full"

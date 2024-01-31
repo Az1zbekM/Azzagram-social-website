@@ -66,7 +66,7 @@ export const useGetPosts = () => {
 				return null
 			}
 
-			// Use the $id of the last document as the cursor.
+			// Use the $id of the last document as the cursor.	
 			const lastId = lastPage.documents[lastPage.documents.length - 1].$id
 			return lastId
 		},

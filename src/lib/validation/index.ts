@@ -25,7 +25,7 @@ export const ProfileValidation = z.object({
 export const PostValidation = z.object({
         caption: z.string().min(2).max(2200),
         file: z.any(),
-        tags: z.string(),
+        tags: z.string(),	
 		location: z.string(),
 	})
 

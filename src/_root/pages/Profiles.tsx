@@ -137,8 +137,9 @@ const Profile = () => {
 					index
 					element={<GridPostList posts={currentUser.posts} showUser={false} />}
 				/>
+
 				{currentUser.$id === user.id && (
-					<Route path='/liked-posts' element={<LikedPosts />} />
+					<Route path='/liked-posts' element={<LikedPosts />}   />
 				)}
 			</Routes>
 			<Outlet />

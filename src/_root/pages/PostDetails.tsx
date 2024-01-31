@@ -130,7 +130,8 @@ const PostDetails = () => {
 										key={`${tag}${index}`}
 										className='text-light-3 small-regular'
 									>
-										#{tag}
+										{/* if tag is not empty display , otherwise don't display it */}
+										{tag ? `#${tag} ` : ''}
 									</li>
 								))}
 							</ul>
