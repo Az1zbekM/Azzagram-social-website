@@ -3,6 +3,7 @@ import { Models } from 'appwrite'
 // import { useToast } from "@/components/ui/use-toast";
 import { Loader, PostCard, UserCard } from '@/components/shared'
 import { useGetRecentPosts, useGetUsers } from '@/lib/react-query/queries'
+import UserCardForStory from '@/components/shared/UserCardForStory'
 
 const Home = () => {
 	// const { toast } = useToast();
@@ -34,8 +35,17 @@ const Home = () => {
 	return (
 		<div className='flex flex-1'>
 			<div className='home-container'>
+				{/* profiles section dynamically generated here	 */}
+					<div className='home-profiles w-full flex justify-center items-center gap-9'>
+						{isUserLoading && !creators ? (
+							<Loader />
+						) : (
+							<UserCardForStory users={creators?.documents} />
+						)}
+					</div>
+
+					{/* posts section */}
 				<div className='home-posts'>
-					<h2 className='h3-bold md:h2-bold w-full text-center text-primary-500 text-3xl'>Recent Posts</h2>
 					{isPostLoading && !posts ? (
 						<Loader />
 					) : (

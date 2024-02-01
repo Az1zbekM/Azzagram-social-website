@@ -213,7 +213,7 @@ const ChatPage = () => {
 							className={`bg-transparent hover:hidden `}
 							onClick={handleSignOut}
 						>
-							<img src='/public/assets/icons/logout.svg' alt='logout' />
+							<img src='/assets/icons/logout.svg' alt='logout' />
 						</Button>
 					</ul>
 				</div>
@@ -226,7 +226,7 @@ const ChatPage = () => {
 				<div className='flex chat-topbar  h-[15%] bg-dark-1 w-full border-b border-b-[#5c5c7b]'>
 					<div className='flex w-full justify-center gap-4 items-center'>
 						<img
-							src='/public/assets/icons/chat.svg'
+							src='/assets/icons/chat.svg'
 							alt='chat'
 							width={44}
 							height={44}
