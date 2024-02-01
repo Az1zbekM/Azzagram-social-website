@@ -128,65 +128,69 @@ const Room = (): JSX.Element => {
         }
     }
     return (
-        <main className='w-[600px] mx-auto my-5'>
-            <TestHeader />
-            <div className='room p-[2em] border-2 border-primary-500 rounded bg-dark-3'>
-                <form onSubmit={handleSubmit} id='message--form'>
-                    <div>
-                        <textarea
-                            required
-                            maxLength={1000}
-                            placeholder='Message'
-                            onChange={e => setMessageBody(e.target.value)}
-                            value={messageBody}
-                            className='bg-dark-3 w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
-                        ></textarea>
-                        {/*input submit */}
-                        <div className='mt-0'>
-                            <input
-                                className='mb-2 w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
-                                type='submit'
-                                value={'Send'}
-                                id='submit'
-                            />
-                        </div>
-                    </div>
-                </form>
-                <div className='messages h-[340px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
-                    {messages?.map(message => (
-                        <div key={message.$id} className='flex flex-col gap-2 mb-2'>
-                            <div className='flex justify-between items-center'>
-                                <p>
-                                    {message?.username ? (
-                                        <span>{message.username}</span>
-                                    ) : (
-                                        <span>Anonymous User</span>
-                                    )}
-                                </p>
+			<main className='w-[600px] mx-auto my-5'>
+				<TestHeader />
+				<div className='room p-[2em] border-2 border-primary-500 rounded bg-dark-3'>
+					<form onSubmit={handleSubmit} id='message--form'>
+						<div>
+							<textarea
+								required
+								maxLength={1000}
+								placeholder='Message'
+								onChange={e => setMessageBody(e.target.value)}
+								value={messageBody}
+								className='bg-dark-3 w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
+							></textarea>
+							{/*input submit */}
+							<div className='mt-0'>
+								<input
+									className='mb-2 w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
+									type='submit'
+									value={'Send'}
+									id='submit'
+								/>
+							</div>
+						</div>
+					</form>
+					<div className='messages h-[340px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
+						{messages?.map(message => (
+							<div key={message.$id} className='flex flex-col gap-2 mb-2'>
+								<div className='flex justify-between items-center'>
+									<p>
+										{message?.username ? (
+											<span>{message.username}</span>
+										) : (
+											<span>Anonymous User</span>
+										)}
+									</p>
 
-                                <p className='text-gray-500 small-regular'>
-                                    {/* create date but only display time */}
-                                    {new Date(message.$createdAt).toLocaleTimeString()}
-                                </p>
+									<p className='text-gray-500 small-regular'>
+										{/* create date but only display time */}
+										{new Date(message.$createdAt).toLocaleTimeString()}
+									</p>
 
-                                    {/* <button onClick={() => deleteMessage(message.$id)}>
+									{/* <button onClick={() => deleteMessage(message.$id)}>
                                         <img src='/assets/icons/trash.svg' alt='delete' />
                                     </button> */}
-                                
-                                {/* <button onClick={() => deleteMessage(message.$id)}>
-										<img src='/assets/icons/trash.svg' alt='delete' />
-									</button> */}
-                            </div>
 
-                            <div className=' w-fit max-w-full break-words border border-primary-500 rounded p-2'>
-                                <span className='text-primary-500'>{message.Body}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </main>
-    )
+									{message.$permissions.includes(
+										`delete(\"users\")`
+									) && (
+										<button onClick={() => deleteMessage(message.$id)}>
+											<img src='/assets/icons/trash.svg' alt='delete' />
+										</button>
+									)}
+								</div>
+
+								<div className=' w-fit max-w-full break-words border border-primary-500 rounded p-2'>
+									<span className='text-primary-500'>{message.Body}</span>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</main>
+		)
 }
 
 export default Room
