@@ -169,11 +169,10 @@ const Room = (): JSX.Element => {
                                     {new Date(message.$createdAt).toLocaleTimeString()}
                                 </p>
 
-                                {message.$permissions.includes(`delete(\"users\")`) && (
-                                    <button onClick={() => deleteMessage(message.$id)}>
+                                    {/* <button onClick={() => deleteMessage(message.$id)}>
                                         <img src='/assets/icons/trash.svg' alt='delete' />
-                                    </button>
-                                )}
+                                    </button> */}
+                                
                                 {/* <button onClick={() => deleteMessage(message.$id)}>
 										<img src='/assets/icons/trash.svg' alt='delete' />
 									</button> */}
