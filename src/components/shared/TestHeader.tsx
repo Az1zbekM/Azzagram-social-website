@@ -7,7 +7,6 @@ const TestHeader = () => {
 			{/* {user ? <p>{user.name}</p> : <p>Not logged in</p>} */}
 {/* user name and user id */}
             <p className='text-light-1'>{user?.name}</p>
-            <p className='text-light-1'></p>
 		</div>
 	)
 }

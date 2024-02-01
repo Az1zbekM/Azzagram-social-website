@@ -128,7 +128,7 @@ const Room = (): JSX.Element => {
         }
     }
     return (
-        <main className='max-w-[600px] mx-auto my-5'>
+        <main className='w-[600px] mx-auto my-5'>
             <TestHeader />
             <div className='room p-[2em] border-2 border-primary-500 rounded bg-dark-3'>
                 <form onSubmit={handleSubmit} id='message--form'>
@@ -152,7 +152,7 @@ const Room = (): JSX.Element => {
                         </div>
                     </div>
                 </form>
-                <div>
+                <div className='messages h-[340px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
                     {messages?.map(message => (
                         <div key={message.$id} className='flex flex-col gap-2 mb-2'>
                             <div className='flex justify-between items-center'>
