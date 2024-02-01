@@ -15,35 +15,9 @@ const ChatPage = () => {
 	const [searchResults, setSearchResults] = useState([])
 
 	const handleSearch = async () => {
-		try {
-			// Fetch chat data based on the search query from your Appwrite API endpoint
-			const response = await fetch(
-				`/v1/database/collection/{65855a016d264c3d1c7b}/document?search=${searchQuery}`,
-				{
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						'X-Appwrite-Project': '65851a5f07540b9f0461',
-						'X-Appwrite-Key':
-							'8b6a62d867c44d392142790cc22bc099225fd10e49a5a018031e059f651319d81e2ec6bc80b9e11d413045e5570e0502f889bc9b3b5cbe40e87668d3230c9d3587a492f3fd809b539c9ff86edca8f421269d78e3702a77490a136c54e454bf4acae7ad28a798e422af74329886dfecaceae5eff2817713424dc0dcd4084a6c25',
-					},
-				}
-			)
+		// TODO: add search logic
+		setSearchResults([])
 
-			if (!response.ok) {
-				throw new Error(`Failed to fetch data. Status: ${response.status}`)
-			}
-
-			const data = await response.json()
-			console.log('API Response:', data)
-			// Assuming participants are stored in the 'participants' field of each document
-			const participants = data.documents.map((document: { users: string }) => document.users)
-
-			// Update state with search results (participants)
-			setSearchResults(participants)
-		} catch (error: any) {
-			console.error('Error fetching chat data:', error.message)
-		}
 	}
 
 
@@ -63,6 +37,8 @@ const ChatPage = () => {
 
 	const handleCloseDialog = () => {
 		setIsDialogOpen(false)
+		// then navigate to /chats by id of the user
+		navigate(`/chats/${user?.$id}`)
 	}
 
 	const handleSignOut = async (
@@ -75,6 +51,7 @@ const ChatPage = () => {
 		navigate('/sign-in')
 	}
 
+// //	Open Dialog
 	const OpenDialog = () => {
 		return (
 			<div className='dialog-overlay w-screen h-screen fixed top-0 left-0 z-50  bg-[rgba(0,0,0,0.9)] '>
@@ -146,6 +123,9 @@ const ChatPage = () => {
 		)
 	}
 
+
+
+	// ///			Chat Room
 	return (
 		<div className='flex h-screen  w-full overflow-auto custom-scrollbar '>
 			<nav className='p-4 w-[100px] md:flex flex-col justify-between bg-dark-1  border-r border-r-[#5c5c7b]'>

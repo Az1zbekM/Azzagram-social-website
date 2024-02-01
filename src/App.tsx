@@ -4,7 +4,7 @@ import SigninFrom from '../src/_auth/forms/SigninForm';
 import SignupFrom from '../src/_auth/forms/SignupForm';
 import AuthLayout from './_auth/AuthLayout';
 import RootLayout from './_root/RootLayout';
-import { AllUsers, ChatPage, CreatePost, EditPost, Home, PostDetails, Profiles, Saved, UpdateProfile } from './_root/pages';
+import { AllUsers, ChatPage, CreatePost, EditPost, Home, PostDetails, Profiles, Room, Saved, UpdateProfile } from './_root/pages';
 //toast
 import { Toaster } from '@/components/ui/toaster'
 
@@ -29,6 +29,7 @@ const App = () => {
             <Route path='/update-profile/:id' element={<UpdateProfile/>}/>
           </Route> 
           <Route path='/chats' element={<ChatPage/>}/>
+          <Route path='/room' element={<Room/>}/>
         </Routes>
         <Toaster/>
       </main>

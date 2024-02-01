@@ -8,5 +8,6 @@ export { default as PostDetails } from "./PostDetails";
 export { default as UpdateProfile } from "./UpdateProfile";
 export { default as LikedPosts } from "./LikedPosts";
 export { default as ChatPage } from "./ChatPage";
+export { default as Room } from "./Room";
 
 
