@@ -11,7 +11,7 @@ export const sidebarLinks = [
 	},
 	{
 		imgURL: '/assets/icons/chat.svg',
-		route: '/chats',
+		route: '/room',
 		label: 'Chats',
 	},
 	{

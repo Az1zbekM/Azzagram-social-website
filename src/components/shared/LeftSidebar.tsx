@@ -5,7 +5,6 @@ import { Loader } from '@/components/shared'
 import { Button } from '@/components/ui/button'
 import { useSignOutAccount } from '@/lib/react-query/queries'
 import { INITIAL_USER, useUserContext } from '@/context/AuthContext'
-import '../shared/Leftsidebar.css'
 const LeftSidebar = () => {
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
@@ -46,7 +45,7 @@ const LeftSidebar = () => {
 							id='profileimg'
 							src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
 							alt='profile'
-							className='h-12 w-12 rounded-full'
+							className='h-12 w-12 rounded-full border-2 border-primary-500 p-0'
 						/>
 						<div className='flex flex-col'>
 							<p className='body-bold'>{user.name}</p>

@@ -2,7 +2,6 @@ import { Models } from "appwrite";
 import { Link } from "react-router-dom";
 
 import { Button } from "../ui/button";
-import '../shared/Leftsidebar.css'
 type UserCardProps = {
   user: Models.Document & { imageUrl?: string };
 };

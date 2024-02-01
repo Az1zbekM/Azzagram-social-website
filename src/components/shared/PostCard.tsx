@@ -1,6 +1,5 @@
 import { Models } from 'appwrite'
 import { Link } from 'react-router-dom'
-import '../shared/Leftsidebar.css'
 import  {PostStats}  from '@/components/shared'
 import { multiFormatDateString } from '@/lib/utils'
 import { useUserContext } from '@/context/AuthContext'
