@@ -16,7 +16,7 @@ const Topbar = () => {
 				<div className='flex-between py-4 px-5 items-center'>
 					<Link to='/' className='flex gap-3 items-center'>
 						<img
-							src='/assets/images/logo.svg'
+							src='/assets/icons/chat.svg'
 							alt='logo'
 							width={135}
 							height={325}
@@ -33,7 +33,7 @@ const Topbar = () => {
 						</Button>
 						<Link to={`/profile/${user.id}`} className='flex-center gap-3'>
 							<img
-								src={user.imageUrl || '/assets/images/profile.png'}
+								src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
 								alt='Profile image'
 								className='w-8 h-8 rounded-full'
 							/>
