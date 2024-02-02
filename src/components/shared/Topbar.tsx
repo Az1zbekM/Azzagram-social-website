@@ -18,8 +18,8 @@ const Topbar = () => {
 						<img
 							src='/assets/icons/chat.svg'
 							alt='logo'
-							width={135}
-							height={325}
+							width={32}
+							height={32}
 						/>
 					</Link>
 
