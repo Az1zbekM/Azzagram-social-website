@@ -34,7 +34,7 @@ const UserCardForStory = ({ users }: UserCardProps) => {
 					transform: 'translateY(-50%)',
 					left: '10px',
 				}}
-                className='hidden md:flex md:items-center md:ml-2'
+                className=' md:flex md:items-center md:ml-2'
 			>
 				{'<'}
 			</CarouselPrevious>
@@ -79,7 +79,7 @@ const UserCardForStory = ({ users }: UserCardProps) => {
 					transform: 'translateY(-50%)',
 					right: '10px',
 				}}
-                className='hidden md:flex md:items-center  md:mr-2'
+                className=' md:flex md:items-center  md:mr-2'
 			>
 				{'>'}
 			</CarouselNext>
