@@ -10,7 +10,7 @@ import { Toaster } from '@/components/ui/toaster'
 
 const App = () => {
   return (
-      <main className="flex h-screen overflow-scroll custom-scrollbar-home">
+      <main className="flex h-screen">
         <Routes>
           <Route element={<AuthLayout/>}>
             {/* public routes */}
