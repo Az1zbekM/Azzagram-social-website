@@ -130,7 +130,7 @@ const Room = (): JSX.Element => {
     }
     return (
 			<main className='min-w-full h-full bg-gray-500 mx-auto'>
-				<div className='room w-full h-full p-[2em]  rounded bg-dark-3'>
+				<div className='room w-full h-full p-[2em] bg-dark-3'>
 					<form
 						onSubmit={handleSubmit}
 						id='message--form'
