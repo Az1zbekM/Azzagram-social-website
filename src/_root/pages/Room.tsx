@@ -134,17 +134,18 @@ const Room = (): JSX.Element => {
 					<form
 						onSubmit={handleSubmit}
 						id='message--form'
-						className='w-full h-[100px] mb-4 '
+						className='w-full h-[50px] mb-4 '
 					>
-						<div className='w-full '>
-							<div id='textarea_div' className='w-full flex items-start'>
+						<div className='w-full h-[50px] rounded'>
+							<div id='textarea_div' className='w-full bg-transparent flex items-start h-[50px] '>
 								<textarea
 									required
 									maxLength={1000}
 									placeholder='Message'
 									onChange={e => setMessageBody(e.target.value)}
 									value={messageBody}
-									className=' mb-2 h-[50px] resize-none bg-dark-3 w-full rounded border border-r-0 border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-r-none'
+                                    id='textarea'
+									className='p-[14px] mb-2 h-[50px] resize-none bg-transparent w-full rounded border border-r-0 border-primary-500 text-sm text-gray-500 focus:outline-none rounded-r-none md:border-r md:rounded-r overflow-y-auto custom-scrollbar'
 								></textarea>
 								<div id='button_div' className=''>
 									<button
@@ -157,7 +158,7 @@ const Room = (): JSX.Element => {
 							</div>
 
 							{/*input submit */}
-							<div id='input_div' className='hidden md:block'>
+							<div id='input_div' className='hidden md:flex mt-2'>
 								<input
 									className='w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
 									type='submit'
@@ -167,7 +168,7 @@ const Room = (): JSX.Element => {
 							</div>
 						</div>
 					</form>
-					<div className='messages h-[350px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
+					<div className='md:mt-14 messages h-[350px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
 						{messages?.map(message => (
 							<div
 								key={message.$id}
@@ -205,7 +206,7 @@ const Room = (): JSX.Element => {
 								</div>
 
 								<div className=' w-fit max-w-full break-words border border-primary-500 rounded p-2'>
-									<span className='text-primary-500'>{message.Body}</span>
+									<span className='text-white md:text-base text-sm break-words'>{message.Body}</span>
 								</div>
 							</div>
 						))}
