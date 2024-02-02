@@ -1,4 +1,3 @@
-import TestHeader from '@/components/shared/TestHeader'
 import { useUserContext } from '@/context/AuthContext'
 import { appwriteConfig, client, databases } from '@/lib/appwrite/config'
 import { ID, Permission, Query, Role } from 'appwrite'
@@ -20,7 +19,9 @@ interface Message {
     // collectionId
     $collectionId: string
     // userId
-    userId: string
+    // userId: string
+    // user_id
+    user_id: string
     // updatedAt
     $updatedAt: string
     // $permissions  '$permissions' is an array of strings instead of a single string.
@@ -102,7 +103,7 @@ const Room = (): JSX.Element => {
                 Body: doc.Body,
                 $databaseId: doc.$databaseId,
                 $collectionId: doc.$collectionId,
-                userId: doc.userId,
+                user_id: doc.user_id,
                 $updatedAt: doc.$updatedAt,
                 $permissions: doc.$permissions,
             }))
@@ -128,10 +129,9 @@ const Room = (): JSX.Element => {
         }
     }
     return (
-			<main className='w-[600px] mx-auto my-5'>
-				<TestHeader />
-				<div className='room p-[2em] border-2 border-primary-500 rounded bg-dark-3'>
-					<form onSubmit={handleSubmit} id='message--form'>
+			<main className='min-w-full h-full bg-gray-500 mx-auto'>
+				<div className='room w-full h-full p-[2em]  rounded bg-dark-3'>
+					<form onSubmit={handleSubmit} id='message--form' className='w-full'>
 						<div>
 							<textarea
 								required
@@ -152,13 +152,16 @@ const Room = (): JSX.Element => {
 							</div>
 						</div>
 					</form>
-					<div className='messages h-[340px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
+					<div className='messages h-[350px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
 						{messages?.map(message => (
-							<div key={message.$id} className='flex flex-col gap-2 mb-2'>
+							<div key={message.$id} className='w-full p-2 flex flex-col gap-2 mb-2'>
 								<div className='flex justify-between items-center'>
 									<p>
 										{message?.username ? (
-											<span>{message.username}</span>
+                                            <span className='text-gray-500 small-regular'>
+                                                <span> {message.username} {message.user_id === user?.id ? "(You)" : ""}</span>
+                                            </span>
+											
 										) : (
 											<span>Anonymous User</span>
 										)}

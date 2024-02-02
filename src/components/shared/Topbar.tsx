@@ -3,7 +3,6 @@ import { Button } from "../ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queries";
 import { useEffect } from "react";
 import { useUserContext } from "@/context/AuthContext";
-import './Topbar.css';
 const Topbar = () => {
     const {mutate: signOut, isSuccess} = useSignOutAccount();
     const navigate = useNavigate();

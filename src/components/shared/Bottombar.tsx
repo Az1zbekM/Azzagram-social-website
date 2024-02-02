@@ -1,6 +1,5 @@
 import { bottombarLinks } from '@/constants'
 import {Link , useLocation} from 'react-router-dom'
-import './Bottombar.css'
 
 const Bottombar = () => {
   
@@ -23,7 +22,7 @@ const Bottombar = () => {
 							src={link.imgURL}
 							width={16}
 							height={16}
-							// alt={link.label}	
+							alt={link.label}	
 							className={`group-hover:invert-white ${
 								isActive && 'invert-white'
 							} `}	
