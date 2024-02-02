@@ -55,7 +55,7 @@ const UserCardForStory = ({ users }: UserCardProps) => {
 										: '/assets/icons/profile-placeholder.svg'
 								}
 								alt='creator'
-								className='rounded-full w-14 h-14'
+								className='rounded-full w-12 h-12 object-cover'
 								id='profileimg'
 							/>
 							<p className='text-light-1 text-sm text-center font-bold'>
