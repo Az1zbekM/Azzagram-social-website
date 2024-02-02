@@ -132,17 +132,26 @@ const Room = (): JSX.Element => {
 			<main className='min-w-full h-full bg-gray-500 mx-auto'>
 				<div className='room w-full h-full p-[2em]  rounded bg-dark-3'>
 					<form onSubmit={handleSubmit} id='message--form' className='w-full'>
-						<div>
-							<textarea
-								required
-								maxLength={1000}
-								placeholder='Message'
-								onChange={e => setMessageBody(e.target.value)}
-								value={messageBody}
-								className='bg-dark-3 w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
-							></textarea>
+						<div className='w-full h-full'>
+							<div className='relative w-full h-[50px]'>
+								<textarea
+									required
+									maxLength={1000}
+									placeholder='Message'
+									onChange={e => setMessageBody(e.target.value)}
+									value={messageBody}
+									className=' mb-2 h-[50px] resize-none bg-dark-3 w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
+								></textarea>
+							</div>
+							{/* submit button for small screens  */}
+							<button
+								type='submit'
+								className='absolute right-9 top-[18.5%] md:hidden w-[40px] rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
+							>
+								<img src='\assets\icons\sendbtn.svg' alt='' />
+							</button>
 							{/*input submit */}
-							<div className='mt-0'>
+							<div className='mt-0 hidden'>
 								<input
 									className='mb-2 w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
 									type='submit'
@@ -154,14 +163,20 @@ const Room = (): JSX.Element => {
 					</form>
 					<div className='messages h-[350px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
 						{messages?.map(message => (
-							<div key={message.$id} className='w-full p-2 flex flex-col gap-2 mb-2'>
+							<div
+								key={message.$id}
+								className='w-full p-2 flex flex-col gap-2 mb-2'
+							>
 								<div className='flex justify-between items-center'>
 									<p>
 										{message?.username ? (
-                                            <span className='text-gray-500 small-regular'>
-                                                <span> {message.username} {message.user_id === user?.id ? "(You)" : ""}</span>
-                                            </span>
-											
+											<span className='text-gray-500 small-regular'>
+												<span>
+													{' '}
+													{message.username}{' '}
+													{message.user_id === user?.id ? '(You)' : ''}
+												</span>
+											</span>
 										) : (
 											<span>Anonymous User</span>
 										)}
@@ -176,9 +191,7 @@ const Room = (): JSX.Element => {
                                         <img src='/assets/icons/trash.svg' alt='delete' />
                                     </button> */}
 
-									{message.$permissions.includes(
-										`delete(\"users\")`
-									) && (
+									{message.$permissions.includes(`delete(\"users\")`) && (
 										<button onClick={() => deleteMessage(message.$id)}>
 											<img src='/assets/icons/trash.svg' alt='delete' />
 										</button>
