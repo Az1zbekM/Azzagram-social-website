@@ -19,7 +19,7 @@ interface Message {
     // collectionId
     $collectionId: string
     // userId
-    // userId: string
+    userId: string
     // user_id
     user_id: string
     // updatedAt
@@ -104,6 +104,7 @@ const Room = (): JSX.Element => {
                 $databaseId: doc.$databaseId,
                 $collectionId: doc.$collectionId,
                 user_id: doc.user_id,
+                userId: doc.userId,
                 $updatedAt: doc.$updatedAt,
                 $permissions: doc.$permissions,
             }))
@@ -137,14 +138,17 @@ const Room = (): JSX.Element => {
 						className='w-full h-[50px] mb-4 '
 					>
 						<div className='w-full h-[50px] rounded'>
-							<div id='textarea_div' className='w-full bg-transparent flex items-start h-[50px] '>
+							<div
+								id='textarea_div'
+								className='w-full bg-transparent flex items-start h-[50px] '
+							>
 								<textarea
 									required
 									maxLength={1000}
 									placeholder='Message'
 									onChange={e => setMessageBody(e.target.value)}
 									value={messageBody}
-                                    id='textarea'
+									id='textarea'
 									className='p-[14px] mb-2 h-[50px] resize-none bg-transparent w-full rounded border border-r-0 border-primary-500 text-sm text-gray-500 focus:outline-none rounded-r-none md:border-r md:rounded-r overflow-y-auto custom-scrollbar'
 								></textarea>
 								<div id='button_div' className=''>
@@ -168,20 +172,22 @@ const Room = (): JSX.Element => {
 							</div>
 						</div>
 					</form>
-					<div className='md:mt-14 messages h-[350px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar'>
+					<div
+						className={`md:mt-14 messages h-[450px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar flex flex-col items-start`}
+					>
 						{messages?.map(message => (
 							<div
 								key={message.$id}
-								className='w-full p-2 flex flex-col gap-2 mb-2'
+								id={message.$id}
+								className={`w-full mb-2 rounded p-2 flex flex-col ${message.user_id === user?.id ? 'items-end' : ''}`}
 							>
-								<div className='flex justify-between items-center'>
-									<p>
+								<div className='flex justify-start gap-2 items-center p-1'>
+									<p className='text-gray-500 small-regular'>
 										{message?.username ? (
 											<span className='text-gray-500 small-regular'>
 												<span>
-													{' '}
-													{message.username}{' '}
-													{message.user_id === user?.id ? '(You)' : ''}
+                                                    {/* shows username only other than current user */}
+													{message.username ? message.user_id === user?.id ? 'You' : message.username : ''}{' '}
 												</span>
 											</span>
 										) : (
@@ -190,13 +196,8 @@ const Room = (): JSX.Element => {
 									</p>
 
 									<p className='text-gray-500 small-regular'>
-										{/* create date but only display time */}
 										{new Date(message.$createdAt).toLocaleTimeString()}
 									</p>
-
-									{/* <button onClick={() => deleteMessage(message.$id)}>
-                                        <img src='/assets/icons/trash.svg' alt='delete' />
-                                    </button> */}
 
 									{message.$permissions.includes(`delete(\"users\")`) && (
 										<button onClick={() => deleteMessage(message.$id)}>
@@ -205,8 +206,16 @@ const Room = (): JSX.Element => {
 									)}
 								</div>
 
-								<div className=' w-fit max-w-full break-words border border-primary-500 rounded p-2'>
-									<span className='text-white md:text-base text-sm break-words'>{message.Body}</span>
+								<div className='w-fit max-w-[100%] break-words border border-primary-500 rounded p-2'>
+									<span
+										className={`${
+											message.user_id === user?.id
+												? 'text-primary-500'
+												: 'text-light-1'
+										}`}
+									>
+										{message.Body}
+									</span>
 								</div>
 							</div>
 						))}
