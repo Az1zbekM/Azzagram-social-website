@@ -157,7 +157,7 @@ const Room = (): JSX.Element => {
 											type='submit'
 											className='flex items-center justify-center md:hidden w-[50px] h-[50px] rounded border border-l-0 border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-l-none'
 										>
-											<img src='\assets\icons\sendbtn.svg' alt='' />
+											<img src='\assets\icons\sendbtn.svg' alt='Send' />
 										</button>
 									</div>
 								</div>
@@ -189,8 +189,8 @@ const Room = (): JSX.Element => {
 								<div className='flex justify-start gap-2 items-center p-1'>
 									<p className='text-gray-500 small-regular'>
 										{message?.username ? (
-											<span className='text-gray-500 small-regular'>
-												<span>
+											<span className='text-primary-500 small-regular'>
+												<span >
 													{/* shows username only other than current user */}
 													{message.username
 														? message.user_id === user?.id
@@ -203,27 +203,24 @@ const Room = (): JSX.Element => {
 											<span>Anonymous User</span>
 										)}
 									</p>
-
-									<p className='text-gray-500 small-regular'>
-										{new Date(message.$createdAt).toLocaleTimeString()}
-									</p>
-
-									{message.$permissions.includes(`delete(\"users\")`) && (
-										<button onClick={() => deleteMessage(message.$id)}>
-											<img src='/assets/icons/trash.svg' alt='delete' />
-										</button>
-									)}
 								</div>
 
-								<div className='w-fit max-w-[100%] break-words border border-primary-500 rounded p-2'>
+								<div className='w-fit max-w-[100%]  break-words border border-primary-500 rounded p-[6px] '>
 									<span
 										className={`${
 											message.user_id === user?.id
-												? 'text-primary-500'
+												? 'text-light-1'
 												: 'text-light-1'
-										}`}
+										}` }
 									>
-										{message.Body}
+										 <span role='text'>{message.Body}</span>
+										<small  className={`text-gray-500 text-[10px] text-right ml-16`}>
+											{' '}
+											{/* time of message */}
+											<p className='text-gray-500'>
+												{new Date(message.$createdAt).toLocaleTimeString()}
+											</p>
+										</small>
 									</span>
 								</div>
 							</div>
