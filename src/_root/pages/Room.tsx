@@ -131,63 +131,72 @@ const Room = (): JSX.Element => {
     }
     return (
 			<main className='min-w-full h-full bg-gray-500 mx-auto'>
-				<div className='room w-full h-full p-[2em] bg-dark-3'>
-					<form
-						onSubmit={handleSubmit}
-						id='message--form'
-						className='w-full h-[50px] mb-4 '
-					>
-						<div className='w-full h-[50px] rounded'>
-							<div
-								id='textarea_div'
-								className='w-full bg-transparent flex items-start h-[50px] '
-							>
-								<textarea
-									required
-									maxLength={1000}
-									placeholder='Message'
-									onChange={e => setMessageBody(e.target.value)}
-									value={messageBody}
-									id='textarea'
-									className='p-[14px] mb-2 h-[50px] resize-none bg-transparent w-full rounded border border-r-0 border-primary-500 text-sm text-gray-500 focus:outline-none rounded-r-none md:border-r md:rounded-r overflow-y-auto custom-scrollbar'
-								></textarea>
-								<div id='button_div' className=''>
-									<button
+				<div className='room w-full h-full p-5 sm:p-10 bg-dark-3'>
+					<div className='w-full h-[50px] mb-4'>
+						<form
+							onSubmit={handleSubmit}
+							id='message--form'
+							className='w-full h-[50px] mb-4 '
+						>
+							<div className='w-full h-[50px] rounded'>
+								<div
+									id='textarea_div'
+									className='w-full bg-transparent flex items-start h-[50px] '
+								>
+									<textarea
+										required
+										maxLength={1000}
+										placeholder='Message'
+										onChange={e => setMessageBody(e.target.value)}
+										value={messageBody}
+										id='textarea'
+										className='p-[14px] mb-2 h-[50px] resize-none bg-transparent w-full rounded border border-r-0 border-primary-500 text-sm text-gray-500 focus:outline-none rounded-r-none md:border-r md:rounded-r overflow-y-auto custom-scrollbar'
+									></textarea>
+									<div id='button_div' className=''>
+										<button
+											type='submit'
+											className='flex items-center justify-center md:hidden w-[50px] h-[50px] rounded border border-l-0 border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-l-none'
+										>
+											<img src='\assets\icons\sendbtn.svg' alt='' />
+										</button>
+									</div>
+								</div>
+
+								{/*input submit */}
+								<div id='input_div' className='hidden md:flex mt-2'>
+									<input
+										className='w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
 										type='submit'
-										className='flex items-center justify-center md:hidden w-[50px] h-[50px] rounded border border-l-0 border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-l-none'
-									>
-										<img src='\assets\icons\sendbtn.svg' alt='' />
-									</button>
+										value={'Send'}
+										id='submit'
+									/>
 								</div>
 							</div>
+						</form>
+					</div>
 
-							{/*input submit */}
-							<div id='input_div' className='hidden md:flex mt-2'>
-								<input
-									className='w-full rounded border border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
-									type='submit'
-									value={'Send'}
-									id='submit'
-								/>
-							</div>
-						</div>
-					</form>
 					<div
-						className={`md:mt-14 messages h-[450px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar flex flex-col items-start`}
+						className={`md:mt-14 messages h-[420px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar flex flex-col items-start`}
 					>
 						{messages?.map(message => (
 							<div
 								key={message.$id}
 								id={message.$id}
-								className={`w-full mb-2 rounded p-2 flex flex-col ${message.user_id === user?.id ? 'items-end' : ''}`}
+								className={`w-full mb-2 rounded p-2 flex flex-col ${
+									message.user_id === user?.id ? 'items-end' : ''
+								}`}
 							>
 								<div className='flex justify-start gap-2 items-center p-1'>
 									<p className='text-gray-500 small-regular'>
 										{message?.username ? (
 											<span className='text-gray-500 small-regular'>
 												<span>
-                                                    {/* shows username only other than current user */}
-													{message.username ? message.user_id === user?.id ? 'You' : message.username : ''}{' '}
+													{/* shows username only other than current user */}
+													{message.username
+														? message.user_id === user?.id
+															? 'You'
+															: message.username
+														: ''}{' '}
 												</span>
 											</span>
 										) : (
