@@ -1,13 +1,9 @@
 import { Models } from 'appwrite'
-
-// import { useToast } from "@/components/ui/use-toast";
 import { Loader, PostCard, UserCard } from '@/components/shared'
 import { useGetRecentPosts, useGetUsers } from '@/lib/react-query/queries'
 import UserCardForStory from '@/components/shared/UserCardForStory'
 
 const Home = () => {
-	// const { toast } = useToast();
-
 	const {
 		data: posts,
 		isLoading: isPostLoading,
@@ -36,21 +32,21 @@ const Home = () => {
 		<div className='flex flex-1'>
 			<div className='home-container'>
 				{/* profiles section dynamically generated here	 */}
-					<div className='home-profiles w-full flex justify-center items-center gap-9'>
-						{isUserLoading && !creators ? (
-							<Loader />
-						) : (
-							<UserCardForStory users={creators?.documents} />
-						)}
-					</div>
+				<div className='home-profiles w-full flex justify-center items-center gap-9'>
+					{isUserLoading && !creators ? (
+						<Loader />
+					) : (
+						<UserCardForStory users={creators?.documents} />
+					)}
+				</div>
 
-					{/* posts section */}
+				{/* posts section */}
 				<div className='home-posts'>
 					{isPostLoading && !posts ? (
 						<Loader />
 					) : (
 						<ul className='flex flex-col flex-1 gap-9 w-full '>
-							{posts?.documents.map((post: Models.Document	) => (
+							{posts?.documents.map((post: Models.Document) => (
 								<li key={post.$id} className='flex justify-center w-full'>
 									<PostCard post={post} />
 								</li>
@@ -60,19 +56,16 @@ const Home = () => {
 				</div>
 			</div>
 
-			<div className='home-creators'>
+			<div className='hidden xl:flex md:flex flex-col w-60 2xl:w-465 px-6 py-10 gap-10 overflow-scroll custom-scrollbar'>
 				<h3 className='h3-bold text-light-1'>Top Creators</h3>
-				{isUserLoading && !creators ? (
-					<Loader />
-				) : (
-					<ul className='grid 2xl:grid-cols-2 gap-6'>
-						{creators?.documents.map(creator => (
-							<li key={creator?.$id}>
-								<UserCard user={creator} />
-							</li>
-						))}
-					</ul>
-				)}
+
+				<ul className='grid 2xl:grid-cols-2 gap-6'>
+					{creators?.documents.map(creator => (
+						<li key={creator?.$id}>
+							<UserCard user={creator} />
+						</li>
+					))}
+				</ul>
 			</div>
 		</div>
 	)
