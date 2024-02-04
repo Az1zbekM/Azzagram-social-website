@@ -187,10 +187,31 @@ const Room = (): JSX.Element => {
 								}`}
 							>
 								<div className='flex justify-start gap-2 items-center p-1'>
+									{/* delete button shows only for current user and displays only if current user hover over the message*/}
+                                    {message.user_id === user?.id && (
+                                        <button
+                                            onClick={() => deleteMessage(message.$id)}
+                                            // className when hover over the button shows delete button otherwise not
+                                            className={`${
+                                                message.user_id === user?.id    
+                                                    ? 'hover:opacity-100'
+                                                    : 'opacity-0'
+
+                                            } opacity-0 w-4 h-4`}         
+                                            
+                                        >
+                                            <img    
+                                                src='/assets/icons/delete.svg'
+                                                alt='Delete'
+                                                className='w-4 h-4 '
+                                            />
+                                        </button>
+                                        
+                                    )}
 									<p className='text-gray-500 small-regular'>
 										{message?.username ? (
 											<span className='text-primary-500 small-regular'>
-												<span >
+												<span>
 													{/* shows username only other than current user */}
 													{message.username
 														? message.user_id === user?.id
@@ -211,10 +232,12 @@ const Room = (): JSX.Element => {
 											message.user_id === user?.id
 												? 'text-light-1'
 												: 'text-light-1'
-										}` }
+										}`}
 									>
-										 <span role='text'>{message.Body}</span>
-										<small  className={`text-gray-500 text-[10px] text-right ml-16`}>
+										<span role='text'>{message.Body}</span>
+										<small
+											className={`text-gray-500 text-[10px] text-right ml-16`}
+										>
 											{' '}
 											{/* time of message */}
 											<p className='text-gray-500'>
