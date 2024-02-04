@@ -191,7 +191,7 @@ const Room = (): JSX.Element => {
 									{message.user_id === user?.id && (
 										<button
 											onClick={() => deleteMessage(message.$id)}
-											className='w-4 h-4 opacity-0 hover:opacity-100'
+											className='w-4 h-4 opacity-60 hover:opacity-100'
 										>
 											<img
 												src='/assets/icons/delete.svg'
