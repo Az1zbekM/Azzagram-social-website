@@ -31,8 +31,8 @@ const LeftSidebar = () => {
 						alt='Go Go Go'
 						className='w-8 h-8'
 					/>
-					<h1 className='body-bold font-serif text-primary-500 text-3xl '>
-						Azzagram
+					<h1 className='body-bold font-serif text-primary-500 text-[24px]  '>
+						AzzTeamChat
 					</h1>
 				</Link>
 				{isLoading || !user.email ? (

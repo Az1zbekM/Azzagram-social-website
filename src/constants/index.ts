@@ -12,7 +12,12 @@ export const sidebarLinks = [
 	{
 		imgURL: '/assets/icons/chat.svg',
 		route: '/chats',
-		label: 'Chats',
+		label: 'Chats room',
+	},
+	{
+		imgURL: '/assets/icons/all-chats.svg',
+		route: '/all-chats',
+		label: 'Chats ',
 	},
 	{
 		imgURL: '/assets/icons/bookmark.svg',

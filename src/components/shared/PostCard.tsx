@@ -31,7 +31,11 @@ const PostCard = ({ post }: PostCardProps) => {
 
 					<div className='flex flex-col'>
 						<p className='base-medium lg:body-bold text-light-1'>
-							{post.creator.name}
+							{/* if creators name long then truncate */}
+							{post.creator.name.length > 12 ?
+								post.creator.name.slice(0, 10) + '...'
+								: post.creator.name}
+
 						</p>
 						<div className='flex-center gap-2 text-light-3'>
 							<p className='subtle-semibold lg:small-regular '>

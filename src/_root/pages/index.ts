@@ -7,6 +7,8 @@ export { default as EditPost } from "./EditPost";
 export { default as PostDetails } from "./PostDetails";
 export { default as UpdateProfile } from "./UpdateProfile";
 export { default as LikedPosts } from "./LikedPosts";
-export { default as Room } from "./Room";
+export { default as ChatsRoom } from "./ChatsRoom";
+export { default as AllChats } from "./AllChats";
+
 
 
