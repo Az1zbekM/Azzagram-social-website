@@ -152,7 +152,7 @@ const Room = (): JSX.Element => {
 										id='textarea'
 										className='p-[14px] mb-2 h-[50px] resize-none bg-transparent w-full rounded border border-r-0 border-primary-500 text-sm text-gray-500 focus:outline-none rounded-r-none md:border-r md:rounded-r overflow-y-auto custom-scrollbar'
 									></textarea>
-									<div id='button_div' className=''>
+									<div id='button_div'>
 										<button
 											type='submit'
 											className='flex items-center justify-center md:hidden w-[50px] h-[50px] rounded border border-l-0 border-primary-500 p-2 text-sm text-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-l-none'
@@ -188,36 +188,50 @@ const Room = (): JSX.Element => {
 							>
 								<div className='flex justify-start gap-2 items-center p-1'>
 									{/* delete button shows only for current user and displays only if current user hover over the message*/}
-                                    {message.user_id === user?.id && (
-                                        <button
-                                            onClick={() => deleteMessage(message.$id)}
-                                            // className when hover over the button shows delete button otherwise not
-                                            className={`${
-                                                message.user_id === user?.id    
-                                                    ? 'hover:opacity-100'
-                                                    : 'opacity-0'
+									{message.user_id === user?.id && (
+										<button
+											onClick={() => deleteMessage(message.$id)}
+											className='w-4 h-4 opacity-0 hover:opacity-100'
+										>
+											<img
+												src='/assets/icons/delete.svg'
+												alt='Delete'
+												className='w-4 h-4 '
+											/>
+										</button>
+									)}
 
-                                            } opacity-0 w-4 h-4`}         
-                                            
-                                        >
-                                            <img    
-                                                src='/assets/icons/delete.svg'
-                                                alt='Delete'
-                                                className='w-4 h-4 '
-                                            />
-                                        </button>
-                                        
-                                    )}
+									{/* timestamp if current user shows left side otherwise right side */}
+									{message.user_id === user?.id && (
+										<p className='text-gray-500 text-[12px]'>
+											{new Date(message.$createdAt).toLocaleTimeString()}
+										</p>
+									)}
+
 									<p className='text-gray-500 small-regular'>
 										{message?.username ? (
 											<span className='text-primary-500 small-regular'>
 												<span>
 													{/* shows username only other than current user */}
-													{message.username
+													{message.username 
 														? message.user_id === user?.id
 															? 'You'
-															: message.username
-														: ''}{' '}
+															: 
+                                                            // if user's username is too long cut it til 11 characters
+                                                            message.username.length > 11  
+                                                                ? `${message.username.slice(0, 10)}...` 
+                                                                : message.username
+														: ``}{' '}
+												</span>
+												<span className='text-gray-500 text-[12px] '>
+													{`${
+														// if not current user shows timestamp
+														message.user_id !== user?.id
+															? new Date(
+																	message.$createdAt
+															  ).toLocaleTimeString()
+															: ''
+													} `}
 												</span>
 											</span>
 										) : (
@@ -235,15 +249,6 @@ const Room = (): JSX.Element => {
 										}`}
 									>
 										<span role='text'>{message.Body}</span>
-										<small
-											className={`text-gray-500 text-[10px] text-right ml-16`}
-										>
-											{' '}
-											{/* time of message */}
-											<p className='text-gray-500'>
-												{new Date(message.$createdAt).toLocaleTimeString()}
-											</p>
-										</small>
 									</span>
 								</div>
 							</div>
