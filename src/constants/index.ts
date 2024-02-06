@@ -12,12 +12,12 @@ export const sidebarLinks = [
 	{
 		imgURL: '/assets/icons/chat.svg',
 		route: '/chats',
-		label: 'Chats room',
+		label: 'Room Chat',
 	},
 	{
 		imgURL: '/assets/icons/all-chats.svg',
-		route: '/all-chats',
-		label: 'Chats ',
+		route: '/all-chats', 
+		label: 'My Chats',
 	},
 	{
 		imgURL: '/assets/icons/bookmark.svg',
@@ -44,18 +44,24 @@ export const bottombarLinks = [
 		label: 'People',
 	},
 	{
+		imgURL: '/assets/icons/chat.svg',
+		route: '/chats',
+		label: 'Room Chat',
+	},
+	{
+		imgURL: '/assets/icons/all-chats.svg',
+		route: '/all-chats',
+		label: 'Chats',
+	},
+	{
 		imgURL: '/assets/icons/bookmark.svg',
 		route: '/saved',
 		label: 'Saved',
 	},
-	{
-		imgURL: '/assets/icons/chat.svg',
-		route: '/chats',
-		label: 'Chats',
-	},
+
 	{
 		imgURL: '/assets/icons/gallery-add.svg',
 		route: '/create-post',
-		label: 'Create',
+		label: 'Create Post',
 	},
 ]

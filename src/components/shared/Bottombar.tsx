@@ -27,7 +27,7 @@ const Bottombar = () => {
 								isActive && 'invert-white'
 							} `}	
 						/>
-						<p className='tiny-medium text-light-2 '>{link.label}</p>
+						<p className='tiny-medium text-light-2 '>{link.label.length > 5 ? link.label.slice(0, 5) + '...' : link.label}</p>
 					</Link>
 				)
 			})}
