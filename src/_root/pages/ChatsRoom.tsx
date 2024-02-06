@@ -128,13 +128,13 @@ const Room = (): JSX.Element => {
         }
     }
     return (
-			<main className='min-w-full h-full bg-gray-500 mx-auto'>
-				<div className='room w-full h-full p-5 sm:p-10 bg-dark-3'>
+			<main className='min-w-full h-full bg-black mx-auto'>
+				<div className='room w-full h-full p-5 sm:p-10 bg-black	'>
 					<div className='w-full h-[50px] mb-4'>
 						<form
 							onSubmit={handleSubmit}
 							id='message--form'
-							className='w-full h-[50px] mb-4 '
+							className='w-full h-[50px] mb-4'
 						>
 							<div className='w-full h-[50px] rounded'>
 								<div
@@ -174,7 +174,7 @@ const Room = (): JSX.Element => {
 					</div>
 
 					<div
-						className={`md:mt-14 messages h-[420px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar flex flex-col items-start`}
+						className={`md:mt-14 messages h-[400px] md:h-[500px] overflow-y-auto p-2 border border-primary-500 rounded custom-scrollbar flex flex-col items-start`}
 					>
 						{messages?.map(message => (
 							<div

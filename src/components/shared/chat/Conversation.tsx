@@ -143,9 +143,9 @@ const Conversation = () : JSX.Element => {
 			}
 
   return (
-		<div className='hidden md:flex w-full h-full bg-dark-3'>
-			<main className='min-w-full h-full bg-gray-500 mx-auto'>
-				<div className='room w-full h-full p-5 sm:p-10 bg-dark-3'>
+		<div className='hidden md:flex w-full h-full bg-black'>
+			<main className='min-w-full h-full bg-black mx-auto'>
+				<div className='room w-full h-full p-5 sm:p-10 bg-black'>
 					<div className='w-full h-[50px] mb-4'>
 						<form
 							onSubmit={handleSubmit}
