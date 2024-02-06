@@ -26,7 +26,7 @@ const Primary = () => {
 				<ul className=' flex flex-col gap-4 '>
 					{friends?.documents.map(creator => (
 						<li key={creator?.$id} className='flex-1 min-w-[20px] w-full  '>
-							<Friends user={creator} />
+							<Friends users={creator} />
 						</li>
 					))}
 				</ul>

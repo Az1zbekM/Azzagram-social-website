@@ -9,7 +9,9 @@ import { AllUsers, CreatePost, EditPost, Home, PostDetails, Profiles, ChatsRoom,
 import { Toaster } from '@/components/ui/toaster'
 import General from './components/shared/chat/General';
 import Primary from './components/shared/chat/Primary';
-import Request from './components/shared/chat/request';
+import Request from './components/shared/chat/Request';
+import Messaging from './components/shared/chat/Messaging';
+import Conversation from './components/shared/chat/Conversation';
 
 const App = () => {
   return (
@@ -32,11 +34,13 @@ const App = () => {
 					<Route path='/profile/:id/*' element={<Profiles />} />
 					<Route path='/update-profile/:id' element={<UpdateProfile />} />
 					<Route path='/chats' element={<ChatsRoom />} />
-					<Route path='/all-chats' element={<AllChats />} >
-            <Route path='/all-chats' element={<Primary/>}/>
-            <Route path='/all-chats/general' element={<General/>} />
-            <Route path='/all-chats/requests' element={<Request/>}/>
-          </Route>
+					<Route path='/all-chats' element={<AllChats />}>
+						<Route path='/all-chats' element={<Primary />} />
+						<Route path='/all-chats/general' element={<General />} />
+						<Route path='/all-chats/requests' element={<Request />} />
+						<Route path='/all-chats/direct' element={<Messaging />} />
+						<Route path='/all-chats/direct' element={<Conversation />} />
+					</Route>
 				</Route>
 			</Routes>
 			<Toaster />
