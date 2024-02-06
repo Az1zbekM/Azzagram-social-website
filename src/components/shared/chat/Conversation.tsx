@@ -30,9 +30,9 @@ interface Message {
 const Conversation = () : JSX.Element => {
 
      const { user } = useUserContext()
-     const [messages, setMessages] = useState<Message[] | null>(null)
+
+     const [messages, setMessages] = useState<Message[] | null>( null)
      const [messageBody, setMessageBody] = useState<string>('')
-     const [selectedUser, setSelectedUser] = useState<string | null>(null)
 
 
 			useEffect(() => {
@@ -76,14 +76,14 @@ const Conversation = () : JSX.Element => {
 
 			const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 				e.preventDefault()
-                if (selectedUser) {
+                
 				let payload = {
 					user_id: user?.id,
 					username: user?.name,
 					Body: messageBody,
 				}
 
-				let permissions = [Permission.write(Role.users(selectedUser))]
+				let permissions = [Permission.write(Role.users(user?.$id as string))]
 
 				let response = await databases.createDocument<Message>(
 					appwriteConfig.databaseId,
@@ -96,7 +96,7 @@ const Conversation = () : JSX.Element => {
 				console.log('CREATED', response)
 				// setMessages(prevState => [response, ...prevState])
 				setMessageBody('')
-                }
+                
 			}
 
 			const getMessages = async (): Promise<void> => {
@@ -106,7 +106,6 @@ const Conversation = () : JSX.Element => {
 						appwriteConfig.messagesCollectionId,
 						[
                             Query.orderDesc('$createdAt'),
-                            Query.limit(100),
                         ]
 					)
 					console.log('RESPONSE', response)
@@ -143,13 +142,8 @@ const Conversation = () : JSX.Element => {
 				}
 			}
 
-            const handleUserSelect = (user_id: string) => {
-                setSelectedUser(user_id)
-                getMessages()
-            }
-
   return (
-		<div className='hidden md:flex w-full h-full bg-red'>
+		<div className='hidden md:flex w-full h-full bg-dark-3'>
 			<main className='min-w-full h-full bg-gray-500 mx-auto'>
 				<div className='room w-full h-full p-5 sm:p-10 bg-dark-3'>
 					<div className='w-full h-[50px] mb-4'>

@@ -70,9 +70,7 @@ const Room = (): JSX.Element => {
             Body: messageBody
         }
 
-        let permissions = [
-            Permission.write(Role.users(user?.$id as string)),
-        ]
+        let permissions = [Permission.write(Role.users(user?.$id as string))]
 
         let response = await databases.createDocument<Message>(
             appwriteConfig.databaseId,
