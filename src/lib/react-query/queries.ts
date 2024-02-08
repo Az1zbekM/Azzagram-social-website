@@ -26,6 +26,7 @@ import {
 	searchPosts,
 	savePost,
 	deleteSavedPost,
+	getFollowers,
 } from '@/lib/appwrite/api'
 import {  INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'
 
@@ -249,4 +250,13 @@ export const useUpdateUser = () => {
 	})
 }
 
-// ============================================================Search users
+////FOLLOWERS
+
+export const useGetFollowers = (userId: string) => {
+	return useQuery({
+		queryKey: [QUERY_KEYS.GET_FOLLOWERS, userId],
+		queryFn: () => getFollowers(userId),
+		enabled: !!userId,
+	})
+}
+

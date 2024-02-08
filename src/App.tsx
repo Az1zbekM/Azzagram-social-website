@@ -1,5 +1,4 @@
 import {Routes, Route} from 'react-router-dom';
-import './globals.css'
 import SigninFrom from '../src/_auth/forms/SigninForm';
 import SignupFrom from '../src/_auth/forms/SignupForm';
 import AuthLayout from './_auth/AuthLayout';
@@ -12,6 +11,8 @@ import Primary from './components/shared/chat/Primary';
 import Request from './components/shared/chat/Request';
 import Messaging from './components/shared/chat/Messaging';
 import Conversation from './components/shared/chat/Conversation';
+
+import './globals.css'
 
 const App = () => {
   return (
