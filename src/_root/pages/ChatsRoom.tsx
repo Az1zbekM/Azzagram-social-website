@@ -128,8 +128,8 @@ const Room = (): JSX.Element => {
         }
     }
     return (
-			<main className='min-w-full h-full bg-black mx-auto'>
-				<div className='room w-full h-full p-5 sm:p-10 bg-black	'>
+			<main className='min-w-full h-full bg-white mx-auto'>
+				<div className='room w-full h-full p-5 sm:p-10 bg-white	'>
 					<div className='w-full h-[50px] mb-4'>
 						<form
 							onSubmit={handleSubmit}

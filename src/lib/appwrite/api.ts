@@ -557,24 +557,6 @@ export async function updateUser(user: IUpdateUser) {
 	}
 }
 
-// ============================== getFollowers
-
-export async function getFollowers(userId: string) {
-	try {
-		const followers = await databases.listDocuments(
-			appwriteConfig.databaseId,
-			appwriteConfig.followersCollectionId,
-			[Query.equal('userId', userId), Query.orderDesc('$createdAt')]
-		)
-		if (!followers) throw Error
-		return followers
-
-	}
-	catch (error) {
-		console.log(error)
-	}
-}
-
 // ============================== SEARCH USERS
 
 // export async function SearchUsers(searchTerm: string) {

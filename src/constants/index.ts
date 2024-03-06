@@ -9,11 +9,11 @@ export const sidebarLinks = [
 		route: '/all-users',
 		label: 'People',
 	},
-	{
-		imgURL: '/assets/icons/chat.svg',
-		route: '/chats',
-		label: 'Room Chat',
-	},
+	// {
+	// 	imgURL: '/assets/icons/chat.svg',
+	// 	route: '/chats',
+	// 	label: 'Room Chat',
+	// },
 	{
 		imgURL: '/assets/icons/all-chats.svg',
 		route: '/all-chats', 
